@@ -1,0 +1,8 @@
+{
+  "name": "Garantida Motos - Planejamento Estratégico",
+  "description": "Planejamento Estratégico de Marketing & Vendas da Garantida Motos com a assessoria da V4 Company.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
