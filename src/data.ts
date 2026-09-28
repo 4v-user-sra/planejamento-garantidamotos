@@ -2,7 +2,7 @@ export const presentationData = {
   "meta": {
     "title": "Planejamento Estratégico de Marketing & Vendas",
     "subtitle": "Garantida Motos",
-    "date": "Setembro 2026",
+    "date": "Outubro a Dezembro 2026",
     "agency": "V4 COMPANY",
     "purpose": "Aceleração Comercial & Estruturação de Tráfego Pago"
   },
@@ -13,7 +13,7 @@ export const presentationData = {
       "content_slots": {
         "titulo_principal": "Planejamento Estratégico de Marketing & Vendas",
         "subtitulo": "Garantida Motos",
-        "data_apresentacao": "Setembro 2026",
+        "data_apresentacao": "Outubro a Dezembro 2026",
         "logo_agencia": "V4 COMPANY",
         "logo_cliente": "GARANTIDA MOTOS",
         "legenda_rodape": "Assessoria de Marketing e Vendas • Unidades Teresina, Timon e São Miguel do Tapuio"
@@ -33,7 +33,7 @@ export const presentationData = {
         ],
         "etapa_atual_destacada": "Apresentação & Validação",
         "label_fase_rodape": "Você está na fase de validação estratégica e setup de campanhas",
-        "anotacoes_contextuais": "Alinhamento com Douglas (Diretor), Emanuelly (Admin/Financeiro), Joaquim (Comercial/CRM) e time de performance V4 (Felipe Stefanato, Thays Andrade, Emanuelle Sena, Giovanna Mariotto e Andreas Rocha). Foco: Meta Ads para WhatsApp, 2 cenários de verba (R$ 4k vs R$ 6k) e acompanhamento comercial rigoroso no CRM."
+        "anotacoes_contextuais": "Alinhamento com Douglas (Diretor), Emanuelly (Admin/Financeiro), Joaquim (Comercial/CRM) e time de performance V4 (Felipe Stefanato, Thays Andrade, Emanuelle Sena, Giovanna Mariotto e Andreas Rocha). Foco: Meta Ads para WhatsApp, Google Ads de Pesquisa, 2 cenários de verba (Cenário A: R$ 4.000 aprovado vs Cenário B: R$ 5.500 recomendado) e acompanhamento comercial rigoroso no CRM."
       }
     },
     {
@@ -42,16 +42,16 @@ export const presentationData = {
       "content_slots": {
         "titulo": "Sumário Executivo",
         "itens_agenda": [
-          "Diagnóstico do Cenário & Histórico de Vendas",
+          "Diagnóstico do Cenário & Histórico Real da Conta",
           "Auditoria da Vitrine Digital & Site",
           "Benchmarking Competitivo Regional",
           "Diferenciais Inegociáveis da Garantida",
           "Identidade Visual & Diretrizes da Marca",
           "Personas & Perfil do Cliente Ideal (Classes C, D e B)",
-          "Objetivo SMART & OKRs (Fase de Calibragem)",
-          "Estratégia de Aquisição & Cenários de Verba",
-          "Drawflow Visual do Funil Comercial",
-          "Workflow Audiovisual & Playbook Operacional"
+          "Objetivo SMART, Break-Even & OKRs",
+          "Pilares da Estratégia & Cenários de Investimento",
+          "Arquitetura de Campanhas & Drawflow do Funil",
+          "Matriz de Criativos, Regras de Otimização & Calendário"
         ]
       }
     },
@@ -138,41 +138,43 @@ export const presentationData = {
       "id": "07_analise_meta",
       "slide_type": "meta_ads_analysis",
       "content_slots": {
-        "titulo": "Diagnóstico de Tráfego Pago & Histórico de Vendas",
-        "investimento": "R$ 4.000/mês (Plano Atual)",
-        "cpa_medio": "R$ 4,00 - R$ 5,00 (Meta CPL)",
-        "verba_perdida": "3 Meses Inativo",
+        "titulo": "Diagnóstico do Histórico Real da Conta (Jan a Set/2026)",
+        "investimento": "R$ 7.101 em 9 meses",
+        "cpa_medio": "R$ 3,70 (Média de CPL)",
+        "verba_perdida": "20% Fora de Conversão",
         "venda_rastreada": {
-          "valor": "Pico de R$ 1.000.000",
-          "pedidos": 100,
-          "origem": "Mês de Março (100 Motos Vendidas com Tráfego Agressivo Ativo)"
+          "valor": "1.536 Conversas",
+          "pedidos": 160,
+          "origem": "Média de ~R$ 790/mês espalhada em 40 campanhas e 160 anúncios (verba pulverizada)"
         },
         "venda_zero": {
-          "valor": "Queda para R$ 400.000",
+          "valor": "Oscilação de R$ 2,41 a R$ 8,89",
           "pedidos": 0,
-          "origem": "Período recente com 3 trocas de agência e tráfego pago 100% desligado"
+          "origem": "Fevereiro atingiu R$ 2,41 por conversa; em Agosto passou de R$ 8,00 por falta de método"
         },
         "historico_mensal": [
-          { "mes": "Mar", "pedidos": 100, "cpa": 600, "investimento": "R$ 8.000 - 10.000", "obs": "Pico histórico da Garantida: R$ 1M faturados com 100 motos vendidas e marketing ativo" },
-          { "mes": "Abr", "pedidos": 65, "cpa": 620, "investimento": "R$ 6.500", "obs": "Início da instabilidade e primeira troca de assessoria" },
-          { "mes": "Mai", "pedidos": 42, "cpa": 680, "investimento": "R$ 4.000", "obs": "Queda de investimento e descontinuidade de campanhas" },
-          { "mes": "Jun", "pedidos": 35, "cpa": 710, "investimento": "R$ 3.500", "obs": "Tráfego sem estratégia e desalinhamento de equipe" },
-          { "mes": "Jul", "pedidos": 30, "cpa": 750, "investimento": "R$ 3.000", "obs": "Queda acentuada; lojas secundárias no ponto crítico" },
-          { "mes": "Ago", "pedidos": 70, "cpa": 590, "investimento": "R$ 3.500", "obs": "Matriz bateu 52 vendas impulsionada por Feirão interno presencial" },
-          { "mes": "Set", "pedidos": 25, "cpa": 650, "investimento": "R$ 0 (Inativo)", "obs": "Tráfego inativo há 3 meses; captação dependente de balcão e indicação" }
+          { "mes": "Jan", "pedidos": 40, "cpa": 338, "investimento": "R$ 4.000", "obs": "CPL de R$ 3,38 por conversa no WhatsApp" },
+          { "mes": "Fev", "pedidos": 55, "cpa": 241, "investimento": "R$ 2.780", "obs": "Melhor mês histórico da conta: CPL de R$ 2,41 com criativos em vídeo" },
+          { "mes": "Mar", "pedidos": 100, "cpa": 402, "investimento": "R$ 4.020", "obs": "Pico de 100 motos e R$ 1M faturados com marketing ativo e feirão" },
+          { "mes": "Abr", "pedidos": 65, "cpa": 330, "investimento": "R$ 3.300", "obs": "CPL controlado em R$ 3,30 mas início da pulverização de campanhas" },
+          { "mes": "Mai", "pedidos": 42, "cpa": 472, "investimento": "R$ 4.720", "obs": "CPL sobe para R$ 4,72 com campanhas de alcance sem conversão" },
+          { "mes": "Jun", "pedidos": 35, "cpa": 660, "investimento": "R$ 6.600", "obs": "CPL sobe para R$ 6,60 com dispersão em múltiplos conjuntos" },
+          { "mes": "Jul", "pedidos": 30, "cpa": 747, "investimento": "R$ 3.000", "obs": "CPL de R$ 7,47 em estrutura 'Teresina Advantage+'" },
+          { "mes": "Ago", "pedidos": 70, "cpa": 889, "investimento": "R$ 3.500", "obs": "CPL bate R$ 8,89 em 'THE40KM'; Matriz vendeu 52 motos no feirão presencial" },
+          { "mes": "Set", "pedidos": 25, "cpa": 634, "investimento": "R$ 51 (Inativo)", "obs": "Tráfego praticamente inativo (R$ 51 investidos); vendas de balcão" }
         ],
-        "cpa_referencia_historica": 650,
+        "cpa_referencia_historica": 370,
         "funcionou": [
-          "Vídeos reais de entrega de chaves, comemorações com buzinas/confetes e vendedor do mês geram alta conexão regional ('o feio que converte').",
-          "Feirões promocionais presenciais agressivos: histórico de até 20 motos vendidas em 2 dias e pico de 52 vendas na Matriz em agosto.",
-          "Modelos campeões de saída rápida: Shineray Jet (R$ 13.790), Shineray 170 e Seminovas revisadas com garantia na oficina própria.",
-          "Tradição de mais de 20 anos na região gerando confiança e facilidade na aceitação de seminovos como entrada."
+          "Públicos validados: 'PP + interesses' gerou 392 conversas a R$ 2,30 e 'ADV + interesses 18 a 40' fez 91 conversas a R$ 2,43.",
+          "Criativos em vídeo com vendedor falando: 'Reels Vinicius SHI' (R$ 2,13), 'BMT 180 Yasmin' (376 conversas a R$ 2,41), 'SHI 170' (R$ 2,09) e 'F250' (R$ 2,41).",
+          "Carrosséis de modelos campeões: Jet, 170 e Seminovas com regras claras geraram CPL de R$ 2,98.",
+          "Objetivo 100% focado em mensagem com conversa no WhatsApp gerando oportunidade quente para os vendedores."
         ],
         "nao_funcionou": [
-          "Estrutura equivocada no Meta Ads: campanhas anteriores com objetivo de 'Engajamento' para WhatsApp e 'Visita ao Perfil' com chamadas de compra.",
-          "Custo por conversa inflacionado no passado (R$ 8,20 a R$ 10,00/conversa), quando o benchmark de conversão direta é de R$ 4,00 a R$ 5,00.",
-          "Desligamento total do tráfego nos últimos 3 meses, reduzindo as vendas de 100 para ~25-30 motos/mês.",
-          "Ausência de CRM estruturado na rotina dos vendedores, resultando em perda de leads e falta de follow-up."
+          "Verba pulverizada em 40 campanhas e 160 anúncios, impedindo o aprendizado e estabilização do algoritmo.",
+          "20% da verba (R$ 1.424) desperdiçada em topo de funil ineficiente: alcance, visita ao perfil, ThruPlay e tráfego para o site sem conversão.",
+          "Públicos caros e descalibrados: 'THE40KM' de agosto gerou CPL de R$ 8,02 a R$ 15,38 e 'Teresina Advantage+' de julho custou R$ 7,47 por conversa.",
+          "Criativos estáticos poluídos: 'AD NEW JET 125' (R$ 10,33/conversa), 'AD JEF 170' (R$ 533 gastos a R$ 7,11) e 'AD PAGAMENTO' (R$ 7,92)."
         ]
       }
     },
@@ -339,34 +341,23 @@ export const presentationData = {
       "slide_type": "smart_goal_okr",
       "content_slots": {
         "titulo": "Objetivos Estratégicos & OKRs do Projeto",
-        "fase_projeto": "Fase de Calibragem de Indicadores (Até Dezembro / ~3 Meses Variáveis)",
-        "objetivo_geral": "Até dezembro, estabelecer e calibrar todos os indicadores de tráfego pago e performance comercial da Garantida Motos com base na estratégia de campanhas executada. Após esse período inicial de 3 meses (prazo variável conforme a maturidade e volume de dados coletados), analisar a estabilidade das métricas, avaliar a redução do CPL e CAC e buscar performance alinhada ao Break-Even (Ponto de equilíbrio) do projeto.",
-        "kr1_texto": "Encontrar e consolidar 100% dos indicadores de performance (CPL por unidade, volume diário de leads, MQL, SQL, CAC e taxa de conversão por vendedor no CRM).",
-        "insights_operacionais": [
-          "Calibragem contínua de CPL e taxas de conversão por loja",
-          "Alimentação obrigatória do CRM Kanban pela equipe comercial",
-          "Período inicial de 3 meses variável para validação antes de escalar verba",
-          "Foco na rentabilidade das 3 unidades (Teresina, Timon e São Miguel)"
-        ]
-      }
-    },
-    {
-      "id": "13_estrategia",
-      "slide_type": "vertical_feature_list",
-      "content_slots": {
-        "titulo": "Pilares da Estratégia de Aceleração Comercial",
-        "features": [
+        "fase_projeto": "Planejamento Trimestral · Outubro a Dezembro 2026",
+        "objetivo_geral": "Até dezembro, estabelecer e calibrar todos os indicadores de tráfego pago e performance comercial da Garantida Motos com base na estratégia de campanhas executada. Após esse período inicial de 3 meses (prazo variável conforme a maturidade e volume de dados coletados), analisar a estabilidade das métricas, avaliar a redução do CPL e CAC e buscar performance alinhada ao Break-Even da operação.",
+        "krs": [
           {
-            "titulo": "Segmentação Geográfica Estratégica (Teresina/Timon vs São Miguel)",
-            "descricao": "Teresina (Matriz) e Timon (MA) são cidades irmãs coladas (raio compartilhado de até 30 km) agrupadas em campanha conjunta de alta densidade; São Miguel do Tapuio (a 160 km de distância) terá campanha regional dedicada com comunicação específica."
+            "tag": "KR 1 • INTELIGÊNCIA & MÉTRICAS",
+            "titulo": "Mapear 100% dos indicadores do digital",
+            "descricao": "Mensurar e validar todas as métricas do funil (CPL, taxa de conversão MQL/SQL, Custo por Oportunidade e CAC real) para direcionar as decisões estratégicas."
           },
           {
-            "titulo": "Foco Absoluto na Venda Direta de Motos (Shineray Jet, 170 & Seminovas)",
-            "descricao": "Todo o investimento de mídia concentrado nas ofertas de tração rápida e alta liquidez, gerando fluxo diário de compradores e evitando desvio de foco ou filas de espera por locação."
+            "tag": "KR 2 • GESTÃO COMERCIAL & CRM",
+            "titulo": "Acompanhar 100% dos leads de campanhas",
+            "descricao": "Garantir o registro, triagem e atendimento consultivo no WhatsApp e CRM para todos os contatos originados das campanhas de Google Search e Meta Ads."
           },
           {
-            "titulo": "Alinhamento Comercial & Implementação do CRM na 2ª Semana",
-            "descricao": "Reunião de alinhamento operacional com Joaquim e os 7 a 10 consultores comerciais para definir critérios de MQL/SQL, etapas de funil, tempo de resposta ágil e disciplina diária de follow-up."
+            "tag": "KR 3 • ALOCAÇÃO & MÍDIA",
+            "titulo": "Investir 100% da verba aprovada em mídia",
+            "descricao": "Executar com disciplina o orçamento mensal aprovado, distribuindo a verba com precisão entre Google Search (intenção direta) e Meta Ads (reconhecimento e remarketing)."
           }
         ]
       }
@@ -375,22 +366,22 @@ export const presentationData = {
       "id": "13_estrategia_campanhas",
       "slide_type": "campaign_strategy_boxes",
       "content_slots": {
-        "titulo": "Planejamento de Mídia: Cenários & Alocação de Verba",
+        "titulo": "Planejamento de Mídia: Cenários Lado a Lado",
         "boxes": [
           {
-            "percentual": "Cenário 1",
-            "nome": "Plano Básico (R$ 4.000/mês)",
-            "detalhes": "100% focado em Meta Ads direto para WhatsApp. Campanha Conjunta Teresina + Timon (~R$ 2.700) e Campanha Regional São Miguel do Tapuio (~R$ 1.300). CPL projetado em R$ 4,00 a R$ 5,00 gerando 800 a 1.000 conversas/mês sem dispersar verba."
+            "percentual": "Cenário A · Orçamento Aprovado",
+            "nome": "Plano Base (R$ 4.000/mês | R$ 133/dia)",
+            "detalhes": "Meta Ads R$ 3.200 (80%) + Google Ads R$ 800 (20%). Estrutura enxuta: M1 Teresina/Timon (R$ 1.800), M2 São Miguel (R$ 600), M3 Seminovas (R$ 400), M4 Remarketing (R$ 400) e Google Pesquisa (G1 Intenção R$ 500, G2 Modelos R$ 200, G3 Marca R$ 100). Projeta ~865 leads/mês, ~29 motos vendidas pela mídia (R$ 137/moto) somando 54 a 59 motos/mês (supera o break-even) com ~R$ 16,5 mil de margem líquida gerada."
           },
           {
-            "percentual": "Cenário 2",
-            "nome": "Plano Recomendado V4 (R$ 6.000/mês)",
-            "detalhes": "R$ 2.000/mês para cada unidade de forma individualizada (Teresina, Timon e São Miguel do Tapuio), com WhatsApps dedicados e equipe comercial absorvendo maior volume para acelerar a meta de 80 a 100 motos."
+            "percentual": "Cenário B · Recomendado V4",
+            "nome": "Plano de Aceleração (R$ 5.500/mês | R$ 183/dia)",
+            "detalhes": "Meta Ads R$ 4.100 (75%) + Google Ads R$ 1.400 (25%). Mais verba na praça principal (M1 R$ 2.200), ativação de Prova Social M5 (R$ 300) para aquecer e baratear o tráfego, e Google com volume robusto para seminovas (G3 R$ 200) e intenção (G1 R$ 700). Projeta ~1.020 leads/mês, ~36 motos vendidas pela mídia somando 61 a 66 motos/mês (+7 motos a R$ 214 cada vs R$ 700 de margem) gerando ~R$ 20 mil de margem líquida (+R$ 3,5 mil)."
           },
           {
-            "percentual": "Fase 2",
-            "nome": "Expansão Futura (Mês 2 e 3)",
-            "detalhes": "Após calibrar os indicadores de WhatsApp, ativação de Google Ads (Pesquisa/PDV para quem busca 'comprar moto em Teresina'), Remarketing de indecisos no CRM e campanhas sazonais de Feirão (Black Friday / Natal / 'Ano Novo de Moto Nova')."
+            "percentual": "Eficiência Marginal",
+            "nome": "Por que o Cenário B é mais rentável?",
+            "detalhes": "Os R$ 1.500 extras compram cerca de 7 motos a mais por mês a ~R$ 214 cada, valor muito inferior à margem de contribuição de R$ 700/moto. Além disso, abre espaço para o Google operar com volume real de aprendizado e alimenta a prova social no Meta, segurando o CPL à medida que a verba escala."
           }
         ]
       }
@@ -401,26 +392,9 @@ export const presentationData = {
       "content_slots": {
         "titulo": "Arquitetura & Detalhes da Estratégia de Tráfego",
         "subtitulo": "Parâmetros técnicos de campanhas, segmentações de público, criativos e esteira de conversão",
-        "imagem_url": "",
-        "image_placeholder": "Espaço reservado para o Diagrama / Print da Estrutura Detalhada de Campanhas no Gerenciador de Anúncios",
-        "pilares_tecnicos": [
-          {
-            "titulo": "Configuração Técnica & Tracking",
-            "descricao": "Pixel e CAPI otimizados para 'Iniciar Conversa' no WhatsApp com tracking de UTMs por loja e vendedor."
-          },
-          {
-            "titulo": "Geotargeting & Segmentação",
-            "descricao": "Raio conjunto de 25-30km para Teresina/Timon e raio de 15-20km com expansão regional para São Miguel do Tapuio."
-          },
-          {
-            "titulo": "Esteira de Criativos em Vídeo",
-            "descricao": "Vídeos com vendedores no pátio, provas de entrega 'chave na mão' e criativos com parcelas e entrada facilitada."
-          },
-          {
-            "titulo": "Otimização Diária de CPL",
-            "descricao": "Meta de CPL entre R$ 4 e R$ 5, monitoramento de MQL/SQL no CRM e remanejamento contínuo de orçamento."
-          }
-        ]
+        "imagem_url": "https://i.imgur.com/z0zClil.png",
+        "image_placeholder": "Diagrama da Estrutura de Tráfego e Campanhas Meta Ads & Google Ads",
+        "link_estrategia": "https://claude.ai/artifact/23hTLX2kUhfvBTRezZEzxk"
       }
     },
     {
@@ -428,16 +402,16 @@ export const presentationData = {
       "slide_type": "visual_drawflow",
       "content_slots": {
         "titulo": "Drawflow do Funil Comercial & Estrutura de Campanhas",
-        "subtitulo": "Distribuição de verba por praça (Teresina/Timon e São Miguel), criativos em vídeo e conversão no CRM",
-        "orcamento_total": "R$ 4.000 (Básico) / R$ 6.000 (Recomendado)"
+        "subtitulo": "Distribuição de verba por canal (Meta Ads Teresina/Timon, São Miguel e Google Search) e conversão no CRM",
+        "orcamento_total": "Cenário A: R$ 4.000/mês · Cenário B: R$ 5.500/mês"
       }
     },
     {
       "id": "21_criativos",
       "slide_type": "creative_workflow",
       "content_slots": {
-        "titulo": "Workflow de Produção Audiovisual & Criativos",
-        "subtitulo": "Processo integrado entre o time de marketing da V4 e a operação da Garantida Motos",
+        "titulo": "Workflow de Produção Audiovisual & Matriz de Criativos",
+        "subtitulo": "Produção mensal de 8 criativos (Cenário A) a 12 criativos (Cenário B) integrada entre V4 e Garantida",
         "passos": [
           { "titulo": "Roteiro & Estratégia (V4)", "icone": "FileText" },
           { "titulo": "Validação de Ofertas", "icone": "CheckCircle2" },
@@ -446,6 +420,81 @@ export const presentationData = {
           { "titulo": "Veiculação & Tráfego (V4)", "icone": "Rocket" }
         ],
         "link_exemplo": ""
+      }
+    },
+    {
+      "id": "22_regras_otimizacao",
+      "slide_type": "optimization_rules",
+      "content_slots": {
+        "titulo": "Gestão Semanal & Regras de Otimização",
+        "subtitulo": "Indicadores saudáveis, gatilhos de atenção e ações práticas de remanejamento",
+        "regras": [
+          {
+            "indicador": "Custo por conversa (Meta)",
+            "saudavel": "Até R$ 4,00",
+            "atencao": "Acima de R$ 6,00 por 3 dias",
+            "acao": "Pausar o criativo pior e subir um novo do formato vencedor."
+          },
+          {
+            "indicador": "Frequência (conversão)",
+            "saudavel": "Até 2,0",
+            "atencao": "Acima de 2,5",
+            "acao": "Trocar criativos ou expandir levemente o raio geográfico."
+          },
+          {
+            "indicador": "Frequência (remarketing)",
+            "saudavel": "Até 4,0",
+            "atencao": "Acima de 6,0",
+            "acao": "Reduzir temporariamente a verba da campanha de remarketing (M4)."
+          },
+          {
+            "indicador": "CPC Médio (Google Ads)",
+            "saudavel": "Até R$ 2,00",
+            "atencao": "Acima de R$ 3,00",
+            "acao": "Revisar termos de pesquisa reais e negativar termos irrelevantes (aluguel, vaga, peças, etc)."
+          },
+          {
+            "indicador": "Conversa que vira lead qualificado",
+            "saudavel": "40% ou mais",
+            "atencao": "Abaixo de 25%",
+            "acao": "Revisar público, criativo e roteiro de abordagem comercial no WhatsApp."
+          },
+          {
+            "indicador": "Tempo de 1ª resposta no WhatsApp",
+            "saudavel": "Até 5 min",
+            "atencao": "Acima de 30 min",
+            "acao": "Escalar com o Joaquim. Lead frio queima verba e reduz drasticamente a taxa de fechamento."
+          }
+        ],
+        "nota_remanejamento": "Toda segunda-feira, até 20% da verba pode migrar da campanha com pior custo por venda para a de melhor performance, mantendo o orçamento total do mês."
+      }
+    },
+    {
+      "id": "23_calendario_trimestral",
+      "slide_type": "quarterly_calendar",
+      "content_slots": {
+        "titulo": "Calendário de Aceleração Comercial (Outubro a Dezembro 2026)",
+        "subtitulo": "Evolução estratégica mês a mês até a consolidação dos indicadores",
+        "meses": [
+          {
+            "mes": "Outubro",
+            "etapa": "Calibragem & Tração Inicial",
+            "descricao": "Sobe a estrutura enxuta de campanhas, testa 2 públicos por praça e criativos no formato vencedor (vídeos com vendedores). CRM rodando com origem de campanha marcada desde o primeiro lead.",
+            "destaque": "Validação de CPL e Setup do CRM"
+          },
+          {
+            "mes": "Novembro",
+            "etapa": "Black Friday & 13º Salário",
+            "descricao": "Feirão promocional na semana da Black Friday. Concentração de 35% da verba do mês nessa semana estratégica, com a narrativa comercial 'Seu 13º salário vira a entrada da sua moto'.",
+            "destaque": "Pico de Volume & Feirão Presencial"
+          },
+          {
+            "mes": "Dezembro",
+            "etapa": "Ano Novo, Moto Nova",
+            "descricao": "Remarketing agressivo sobre toda a base de contatos que conversou em outubro e novembro. Feirão de fim de ano, fechamento dos indicadores consolidados e planejamento de escala para 2027.",
+            "destaque": "Conversão de Repescagem & Fechamento Anual"
+          }
+        ]
       }
     },
     {

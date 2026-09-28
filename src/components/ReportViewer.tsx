@@ -28,6 +28,8 @@ const themeMap: Record<string, string> = {
   "13_detalhes_trafego": "bg-zinc-100 text-zinc-900 border-zinc-200",
   "18_drawflow_funil": "bg-zinc-900 text-zinc-100 border-zinc-800",
   "21_criativos": "bg-zinc-950 text-zinc-300 border-zinc-900",
+  "22_regras_otimizacao": "bg-zinc-950 text-zinc-300 border-zinc-900",
+  "23_calendario_trimestral": "bg-zinc-900 text-zinc-100 border-zinc-800",
   "19_cronograma": "bg-white text-zinc-900 border-zinc-200",
   "20_plano_midia": "bg-zinc-50 text-zinc-900 border-zinc-200"
 }
@@ -36,8 +38,8 @@ function getSectionTheme(id: string, type: string) {
   if (themeMap[id]) return themeMap[id]
   if (['competitor_benchmark', 'campaign_strategy_boxes', 'traffic_strategy_placeholder'].includes(type)) return 'bg-zinc-100 text-zinc-900 border-zinc-200'
   if (['moodboard_identity', 'spreadsheet_placeholder'].includes(type)) return 'bg-white text-zinc-900 border-zinc-200'
-  if (['process_timeline', 'funnel_flow_diagram', 'visual_drawflow'].includes(type)) return 'bg-black text-zinc-300 border-zinc-900'
-  if (['smart_goal_okr'].includes(type)) return 'bg-zinc-900 text-zinc-300 border-zinc-800'
+  if (['process_timeline', 'funnel_flow_diagram', 'visual_drawflow', 'quarterly_calendar'].includes(type)) return 'bg-black text-zinc-300 border-zinc-900'
+  if (['smart_goal_okr', 'optimization_rules'].includes(type)) return 'bg-zinc-900 text-zinc-300 border-zinc-800'
   return 'bg-zinc-950 text-zinc-300 border-zinc-900'
 }
 
@@ -716,36 +718,59 @@ function RenderBlock({ slide }: { slide: any }) {
   }
 
   if (type === 'smart_goal_okr') {
+    const krsList = d.krs || [
+      {
+        tag: "KR 1 • INTELIGÊNCIA & MÉTRICAS",
+        titulo: "Mapear 100% dos indicadores do digital",
+        descricao: "Mensurar e validar todas as métricas do funil (CPL, taxa de conversão MQL/SQL, Custo por Oportunidade e CAC real) para direcionar as decisões estratégicas."
+      },
+      {
+        tag: "KR 2 • GESTÃO COMERCIAL & CRM",
+        titulo: "Acompanhar 100% dos leads de campanhas",
+        descricao: "Garantir o registro, triagem e atendimento consultivo no WhatsApp e CRM para todos os contatos originados das campanhas de Google Search e Meta Ads."
+      },
+      {
+        tag: "KR 3 • ALOCAÇÃO & MÍDIA",
+        titulo: "Investir 100% da verba aprovada em mídia",
+        descricao: "Executar com disciplina o orçamento mensal aprovado, distribuindo a verba com precisão entre Google Search (intenção direta) e Meta Ads (reconhecimento e remarketing)."
+      }
+    ]
+
     return (
-      <div className="p-10 md:p-12 rounded-3xl border border-red-900/50 bg-gradient-to-br from-zinc-950 via-zinc-900 to-red-950/30 shadow-2xl">
-        <div className="text-center max-w-4xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">{d.titulo}</h2>
-          <p className="text-lg md:text-xl text-zinc-200 leading-relaxed font-sans italic border-l-4 border-red-600 pl-6 py-2 text-left bg-black/30 rounded-r-xl">
+      <div className="p-8 md:p-12 rounded-3xl border border-red-900/50 bg-gradient-to-br from-zinc-950 via-zinc-900 to-red-950/30 shadow-2xl flex flex-col gap-10">
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-red-950/60 border border-red-800/60 text-red-400 font-mono text-xs uppercase tracking-widest mb-4">
+            <Target className="w-3.5 h-3.5" /> {d.fase_projeto || "Planejamento Estratégico"}
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">{d.titulo}</h2>
+          <p className="text-base md:text-lg text-zinc-200 leading-relaxed font-sans italic border-l-4 border-red-600 pl-6 py-2 text-left bg-black/40 rounded-r-xl">
             {d.objetivo_geral}
           </p>
         </div>
 
-        {/* Key Results Grid */}
-        <div className={`grid ${d.kr2_texto ? 'md:grid-cols-2' : 'grid-cols-1 max-w-2xl mx-auto'} gap-6`}>
-          <div className="bg-black/60 border border-red-900/40 p-6 rounded-2xl flex flex-col gap-3 backdrop-blur-sm">
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-lg bg-red-950 border border-red-800 text-red-400 font-black font-mono text-sm">KR 1</span>
-              <span className="text-xs text-zinc-400 uppercase font-semibold">Indicadores</span>
-            </div>
-            <h4 className="text-base font-bold text-white">Métricas & Performance</h4>
-            <p className="text-sm text-zinc-300 leading-relaxed">{d.kr1_texto}</p>
-          </div>
-
-          {d.kr2_texto && (
-            <div className="bg-black/60 border border-red-900/40 p-6 rounded-2xl flex flex-col gap-3 backdrop-blur-sm">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-lg bg-emerald-950 border border-emerald-800 text-emerald-400 font-black font-mono text-sm">KR 2</span>
-                <span className="text-xs text-zinc-400 uppercase font-semibold">Rentabilidade</span>
+        {/* 3 Key Results Cards */}
+        <div className="grid md:grid-cols-3 gap-6 w-full">
+          {krsList.map((kr: any, idx: number) => (
+            <div 
+              key={idx} 
+              className="bg-[#0c0c0e] border border-zinc-800/90 hover:border-zinc-700 p-7 md:p-8 rounded-2xl flex flex-col justify-start text-left shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                <span className="text-xs font-bold font-mono tracking-wider text-red-500 uppercase">
+                  {kr.tag}
+                </span>
               </div>
-              <h4 className="text-base font-bold text-white">Retorno sobre Investimento</h4>
-              <p className="text-sm text-zinc-300 leading-relaxed">{d.kr2_texto}</p>
+              
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-snug">
+                {kr.titulo}
+              </h3>
+              
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
+                {kr.descricao}
+              </p>
             </div>
-          )}
+          ))}
         </div>
       </div>
     )
@@ -835,6 +860,21 @@ function RenderBlock({ slide }: { slide: any }) {
           )}
         </div>
 
+        {/* CTA Button to Strategy Artifact */}
+        {(d.link_estrategia || d.link_detalhes) && (
+          <div className="flex justify-center -mt-2">
+            <a
+              href={d.link_estrategia || d.link_detalhes}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-bold text-sm md:text-base shadow-xl shadow-red-600/25 hover:shadow-red-600/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 border border-red-500/30 group cursor-pointer"
+            >
+              <span>Acessar Estratégia Completa & Detalhamento</span>
+              <ExternalLink className="w-4 h-4 text-white/80 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
+        )}
+
         {expandedImage && (
           <div 
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-12 animate-in fade-in duration-300"
@@ -857,27 +897,83 @@ function RenderBlock({ slide }: { slide: any }) {
   if (type === 'creative_workflow') {
     const icons: any = { FileText, CheckCircle2, Video, Rocket }
 
+    const creativeMatrix = [
+      { formato: "Vídeo com Vendedor", exemplo: "Vinicius ou Yasmin apresentando a Jet e condição do mês (até 30s) • Formato campeão", cenA: 3, cenB: 4 },
+      { formato: "Entrega de Chave", exemplo: "Cliente real saindo da loja com a moto, buzina, confetes e comemoração", cenA: 2, cenB: 3 },
+      { formato: "Carrossel de Modelos", exemplo: "Jet, 170, Phoenix e Urban Lite com parcelas, entradas e regras claras", cenA: 1, cenB: 2 },
+      { formato: "Seminovas & Troca", exemplo: "Motos revisadas na oficina própria com garantia e avaliação da usada na troca", cenA: 1, cenB: 2 },
+      { formato: "São Miguel do Tapuio", exemplo: "Loja e clientes da cidade, sotaque e referências regionais autênticas", cenA: 1, cenB: 1 }
+    ]
+
     return (
-      <div className="flex flex-col items-center max-w-4xl mx-auto w-full">
-        <h2 className={`text-4xl font-bold ${titleColor} mb-4 text-center`}>{d.titulo}</h2>
-        <p className={`text-lg ${subtitleColor} mb-16 text-center max-w-2xl`}>{d.subtitulo}</p>
+      <div className="flex flex-col items-center max-w-5xl mx-auto w-full gap-12">
+        <div className="text-center">
+          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} mb-3`}>{d.titulo}</h2>
+          <p className={`text-base md:text-lg ${subtitleColor} max-w-3xl mx-auto`}>{d.subtitulo}</p>
+        </div>
 
         {/* Horizontal Workflow timeline */}
-        <div className="flex flex-col md:flex-row items-center w-full justify-between relative mb-4 px-4">
+        <div className="flex flex-col md:flex-row items-center w-full justify-between relative px-4">
           <div className={`hidden md:block absolute top-8 left-12 right-12 h-1 -translate-y-1/2 rounded-full ${isLight ? 'bg-zinc-200' : 'bg-zinc-800'} z-0`} />
 
           {d.passos?.map((passo: any, i: number) => {
             const Icon = icons[passo.icone] || FileText
             return (
-              <div key={i} className="flex flex-col items-center text-center gap-4 group relative z-10 mb-8 md:mb-0 w-36">
+              <div key={i} className="flex flex-col items-center text-center gap-3 group relative z-10 mb-8 md:mb-0 w-36">
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border shadow-xl transition-all duration-300 group-hover:-translate-y-2 
                   ${isLight ? 'bg-white border-zinc-200 shadow-zinc-200/50' : 'bg-zinc-950 border-zinc-800 shadow-black/50'}`}>
                   <Icon className="w-7 h-7 text-red-500" />
                 </div>
-                <h4 className={`font-bold text-sm ${titleColor} leading-tight`}>{passo.titulo}</h4>
+                <h4 className={`font-bold text-xs md:text-sm ${titleColor} leading-tight`}>{passo.titulo}</h4>
               </div>
             )
           })}
+        </div>
+
+        {/* Creative Production Matrix Table */}
+        <div className={`w-full rounded-2xl border ${isLight ? 'bg-white border-zinc-200' : 'bg-zinc-900 border-zinc-800'} p-6 md:p-8 shadow-xl`}>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+            <div>
+              <h3 className={`text-xl font-bold ${titleColor}`}>Matriz Mensal de Produção de Criativos</h3>
+              <p className={`text-xs mt-1 ${subtitleColor}`}>Mix balanceado entre prova social, autoridade e conversão direta</p>
+            </div>
+            <div className="flex items-center gap-3 text-xs font-bold">
+              <span className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                Cenário A: 8 criativos/mês
+              </span>
+              <span className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400">
+                Cenário B: 12 criativos/mês
+              </span>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className={`border-b ${isLight ? 'border-zinc-200 text-zinc-500' : 'border-zinc-800 text-zinc-400'} text-xs uppercase tracking-wider font-mono`}>
+                  <th className="pb-3 font-bold">Formato & Estilo</th>
+                  <th className="pb-3 font-bold">Exemplo / Direcionamento Criativo</th>
+                  <th className="pb-3 font-bold text-center">Cenário A</th>
+                  <th className="pb-3 font-bold text-center">Cenário B</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
+                {creativeMatrix.map((item, idx) => (
+                  <tr key={idx} className="hover:bg-zinc-500/5 transition-colors">
+                    <td className={`py-3.5 font-bold ${titleColor}`}>{item.formato}</td>
+                    <td className={`py-3.5 ${subtitleColor} text-xs md:text-sm`}>{item.exemplo}</td>
+                    <td className="py-3.5 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">{item.cenA}</td>
+                    <td className="py-3.5 text-center font-mono font-bold text-red-600 dark:text-red-400">{item.cenB}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-5 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-300 flex items-start gap-2">
+            <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+            <span><strong>Regra do Kickoff:</strong> Toda condição comercial divulgada precisa trazer as regras claras (entrada, prazo, sujeito a análise). Evitar poluição visual e excesso de caixa alta.</span>
+          </div>
         </div>
       </div>
     )
@@ -886,118 +982,136 @@ function RenderBlock({ slide }: { slide: any }) {
   if (type === 'visual_drawflow') {
     return (
       <div className="flex flex-col items-center py-8 w-full overflow-x-auto">
-        <div className="w-full flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div className="w-full flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 max-w-6xl">
           <div>
-            <h2 className={`text-4xl font-bold ${titleColor}`}>{d.titulo}</h2>
-            <p className={`text-base mt-2 ${subtitleColor}`}>{d.subtitulo || "Estrutura de aquisição, distribuição no CRM e conversão para as 3 lojas"}</p>
+            <h2 className={`text-3xl md:text-4xl font-bold ${titleColor}`}>{d.titulo}</h2>
+            <p className={`text-base mt-2 ${subtitleColor}`}>{d.subtitulo || "Estrutura de aquisição em 3 canais, distribuição no CRM e conversão para as 3 lojas"}</p>
           </div>
         </div>
         
-        <div className="min-w-[960px] w-full flex flex-col items-center relative">
+        <div className="min-w-[1050px] w-full max-w-6xl flex flex-col items-center relative">
           {/* Top Node: Budget Scenarios */}
-          <div className="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border-2 border-zinc-700 text-white font-extrabold px-10 py-4 rounded-2xl flex items-center gap-6 shadow-2xl z-10">
+          <div className="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border-2 border-zinc-700 text-white font-extrabold px-8 py-4 rounded-2xl flex items-center gap-6 shadow-2xl z-10">
             <div className="flex items-center gap-3">
               <DollarSign className="w-6 h-6 text-emerald-400" />
               <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário 1 (Básico)</span>
-                <span className="text-xl text-emerald-400 font-black">R$ 4.000 / mês</span>
+                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário A · Orçamento Aprovado</span>
+                <span className="text-lg text-emerald-400 font-black">R$ 4.000 / mês <span className="text-xs text-zinc-400 font-normal">(Meta R$ 3.200 + Google R$ 800)</span></span>
               </div>
             </div>
             <div className="h-8 w-px bg-zinc-700" />
             <div className="flex items-center gap-3">
               <Rocket className="w-6 h-6 text-red-500" />
               <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário 2 (Recomendado V4)</span>
-                <span className="text-xl text-red-400 font-black">R$ 6.000 / mês</span>
+                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário B · Recomendado V4</span>
+                <span className="text-lg text-red-400 font-black">R$ 5.500 / mês <span className="text-xs text-zinc-400 font-normal">(Meta R$ 4.100 + Google R$ 1.400)</span></span>
               </div>
             </div>
           </div>
 
-          <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-          <div className={`w-[60%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+          <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+          <div className={`w-[85%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
           
-          <div className="flex w-[60%] justify-between">
-            <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+          <div className="flex w-[85%] justify-between">
+            <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
               <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
             </div>
-            <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+            <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
+              <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
+            </div>
+            <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
               <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
             </div>
           </div>
 
-          {/* 2 Campaign Channels (Meta Ads Teresina/Timon & São Miguel) */}
-          <div className="grid md:grid-cols-2 gap-8 w-full max-w-4xl px-4 mt-2 z-10">
+          {/* 3 Campaign Channels */}
+          <div className="grid grid-cols-3 gap-6 w-full px-4 mt-2 z-10">
             {/* Branch 1: Meta Ads Teresina + Timon */}
-            <div className={`w-full ${cardBg} p-7 rounded-2xl text-left shadow-xl border-2 border-emerald-500/60 relative flex flex-col justify-between overflow-hidden`}>
-              <div className="absolute top-0 right-0 bg-emerald-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                Motor Principal (65%)
+            <div className={`${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-emerald-500/60 relative flex flex-col justify-between overflow-hidden`}>
+              <div className="absolute top-0 right-0 bg-emerald-500 text-white font-black text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                Motor Principal (65-75%)
               </div>
               <div>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Raio Conjunto (30 km)</span>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Teresina & Timon (25 km)</span>
                 </div>
-                <h4 className={`font-black text-2xl mb-1 ${titleColor}`}>Teresina (Matriz) & Timon</h4>
-                <p className="text-2xl font-black text-emerald-600 mb-3">R$ 2.700 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
-                <div className={`text-xs md:text-sm ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-2`}>
-                  <p><strong>Ofertas:</strong> Shineray Jet (R$ 13.790), Shineray 170 e Seminovas com garantia.</p>
-                  <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs space-y-1">
-                    <p className="font-bold text-emerald-700 dark:text-emerald-400">1. Awareness & Prova Social:</p>
-                    <p className="text-zinc-600 dark:text-zinc-400">Vídeos reais de entregas e equipe no pátio para gerar conexão com o público.</p>
-                    <p className="font-bold text-emerald-700 dark:text-emerald-400 pt-1">2. Conversão Direta:</p>
-                    <p className="text-zinc-600 dark:text-zinc-400">Tração com anúncios diretos para WhatsApp e esteira comercial.</p>
-                  </div>
+                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Meta Ads WhatsApp</h4>
+                <p className="text-xl font-black text-emerald-600 mb-2">R$ 1.800 <span className="text-xs text-zinc-500">a</span> R$ 2.200 <span className="text-xs text-zinc-500">/mês</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
+                  <p><strong>M1:</strong> Jet, 170 e Compra Garantida (Interesses + ADV+ + LAL).</p>
+                  <p><strong>M3:</strong> Seminovas e Troca com garantia da oficina.</p>
+                  <p><strong>M4:</strong> Remarketing de públicos quentes (oferta com prazo).</p>
+                  <p className="text-emerald-700 dark:text-emerald-400 font-semibold">⚡ M5: Prova social e entrega de chaves</p>
                 </div>
               </div>
             </div>
 
             {/* Branch 2: Meta Ads São Miguel do Tapuio */}
-            <div className={`w-full ${cardBg} p-7 rounded-2xl text-left shadow-xl border-2 border-red-500/60 relative flex flex-col justify-between overflow-hidden`}>
-              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                Regional Interior (35%)
+            <div className={`${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-red-500/60 relative flex flex-col justify-between overflow-hidden`}>
+              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                Regional Interior (15-20%)
               </div>
               <div>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                  <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">Polo a 160 km</span>
+                  <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">São Miguel (Raio 50 km)</span>
                 </div>
-                <h4 className={`font-black text-2xl mb-1 ${titleColor}`}>São Miguel do Tapuio</h4>
-                <p className="text-2xl font-black text-red-600 mb-3">R$ 1.300 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
-                <div className={`text-xs md:text-sm ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-2`}>
-                  <p><strong>Público:</strong> Trabalhadores rurais e autônomos buscando economia e aprovação ágil.</p>
-                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-xs space-y-1">
-                    <p className="font-bold text-red-700 dark:text-red-400">1. Awareness Regional:</p>
-                    <p className="text-zinc-600 dark:text-zinc-400">Apresentação da loja e vídeos de clientes locais para criar autoridade.</p>
-                    <p className="font-bold text-red-700 dark:text-red-400 pt-1">2. Conversão Direta:</p>
-                    <p className="text-zinc-600 dark:text-zinc-400">WhatsApp dedicado da equipe local para fechar no balcão.</p>
-                  </div>
+                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Meta Ads Regional</h4>
+                <p className="text-xl font-black text-red-600 mb-2">R$ 600 <span className="text-xs text-zinc-500">a</span> R$ 700 <span className="text-xs text-zinc-500">/mês</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
+                  <p><strong>M2:</strong> Comunicação local, vídeo da loja e clientes da cidade.</p>
+                  <p><strong>Público:</strong> Trabalhadores rurais e autônomos buscando economia.</p>
+                  <p className="text-red-700 dark:text-red-400 font-semibold">📍 WhatsApp direto da equipe da loja de São Miguel</p>
+                  <p className="text-[11px] text-zinc-500">Verba calibrada para 19k hab sem saturar frequência.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Branch 3: Google Ads Search */}
+            <div className={`${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-blue-500/60 relative flex flex-col justify-between overflow-hidden`}>
+              <div className="absolute top-0 right-0 bg-blue-500 text-white font-black text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                Alta Intenção (20-25%)
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Google Rede de Pesquisa</span>
+                </div>
+                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Google Search</h4>
+                <p className="text-xl font-black text-blue-600 mb-2">R$ 800 <span className="text-xs text-zinc-500">a</span> R$ 1.400 <span className="text-xs text-zinc-500">/mês</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
+                  <p><strong>G1:</strong> Intenção ('comprar moto', 'financiamento sem entrada').</p>
+                  <p><strong>G2:</strong> Modelos Shineray Jet e 170 (preço e parcelas).</p>
+                  <p><strong>G3:</strong> Seminovas ('moto usada teresina', 'trocar moto').</p>
+                  <p className="text-blue-700 dark:text-blue-400 font-semibold">🛡️ G4: Proteção da marca 'Garantida Motos'</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Central Convergence Node: CRM & WhatsApp */}
-          <div className="w-full flex flex-col items-center mt-8">
-            <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-            <div className="bg-gradient-to-r from-red-600 to-rose-700 text-white font-bold p-6 rounded-2xl shadow-2xl shadow-red-900/30 flex items-center justify-between gap-6 z-10 w-full max-w-2xl">
+          <div className="w-full flex flex-col items-center mt-6">
+            <div className={`h-6 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+            <div className="bg-gradient-to-r from-red-600 to-rose-700 text-white font-bold p-5 rounded-2xl shadow-2xl shadow-red-900/30 flex items-center justify-between gap-6 z-10 w-full max-w-3xl">
               <div className="flex items-center gap-4">
-                <div className="p-3.5 bg-white/10 rounded-xl">
-                  <MessageSquare className="w-8 h-8 text-white" />
+                <div className="p-3 bg-white/10 rounded-xl">
+                  <MessageSquare className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <span className="text-2xl font-black block">Central de Atendimento & CRM Kanban</span>
-                  <span className="text-xs font-normal text-red-100">Distribuição automática de leads e follow-up com Joaquim e os 7 a 10 consultores</span>
+                  <span className="text-xl font-black block">Central de Atendimento & CRM Kanban</span>
+                  <span className="text-xs font-normal text-red-100">Tracking de origem [M1, M2, G1], qualificação e resposta rápida &lt; 5 min com Joaquim e consultores</span>
                 </div>
               </div>
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl text-right shrink-0">
-                <span className="text-[10px] uppercase block text-red-100 font-bold">Capacidade</span>
-                <span className="text-base font-black">25-40 Leads/Dia</span>
+                <span className="text-[10px] uppercase block text-red-100 font-bold">Volume Esperado</span>
+                <span className="text-base font-black">865 a 1.020 Leads/mês</span>
               </div>
             </div>
           </div>
 
           {/* Connector to Final Closure & Retention */}
-          <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+          <div className={`h-6 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
           
           <div className="grid md:grid-cols-2 gap-6 w-full max-w-3xl z-10">
             {/* Closure Node */}
@@ -1005,20 +1119,113 @@ function RenderBlock({ slide }: { slide: any }) {
               <Store className="w-7 h-7 text-emerald-500 shrink-0" />
               <div className="text-left">
                 <span className="text-base font-black block">Fechamento na Loja Física & Feirões</span>
-                <span className={`text-xs ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>Visita presencial, simulação de crédito, test-ride e entrega</span>
+                <span className={`text-xs ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>Visita presencial, simulação de crédito, aprovação imediata e entrega</span>
               </div>
             </div>
 
-            {/* Retention Node */}
+            {/* Retention & LAL Node */}
             <div className={`${isLight ? 'bg-blue-50 border-blue-300 text-blue-800' : 'bg-blue-950/40 border-blue-500/50 text-blue-400'} border-2 p-5 rounded-2xl flex items-center gap-3 shadow-lg`}>
               <RefreshCw className="w-7 h-7 text-blue-500 shrink-0" />
               <div className="text-left">
-                <span className="text-base font-black block">Pós-Venda & Programa de Indicação</span>
-                <span className={`text-xs ${isLight ? 'text-blue-700' : 'text-blue-300'}`}>Revisão gratuita na oficina própria por indicação de amigos</span>
+                <span className="text-base font-black block">Pós-Venda & Subida de Compradores</span>
+                <span className={`text-xs ${isLight ? 'text-blue-700' : 'text-blue-300'}`}>Lista do CRM alimenta público semelhante (LAL) e exclui clientes no Meta</span>
               </div>
             </div>
           </div>
 
+        </div>
+      </div>
+    )
+  }
+
+  if (type === 'optimization_rules') {
+    return (
+      <div className="flex flex-col max-w-5xl mx-auto w-full gap-8">
+        <div className="text-center">
+          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} mb-3`}>{d.titulo}</h2>
+          <p className={`text-base md:text-lg ${subtitleColor} max-w-3xl mx-auto`}>{d.subtitulo}</p>
+        </div>
+
+        <div className={`w-full rounded-2xl border ${isLight ? 'bg-white border-zinc-200 shadow-xl' : 'bg-zinc-900 border-zinc-800 shadow-2xl'} p-6 md:p-8`}>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className={`border-b ${isLight ? 'border-zinc-200 text-zinc-500' : 'border-zinc-800 text-zinc-400'} text-xs uppercase tracking-wider font-mono`}>
+                  <th className="pb-3 font-bold">Indicador de Performance</th>
+                  <th className="pb-3 font-bold text-emerald-600 dark:text-emerald-400">Zona Saudável</th>
+                  <th className="pb-3 font-bold text-amber-600 dark:text-amber-400">Gatilho de Atenção</th>
+                  <th className="pb-3 font-bold">Ação Operacional Recomendada</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
+                {d.regras?.map((regra: any, idx: number) => (
+                  <tr key={idx} className="hover:bg-zinc-500/5 transition-colors">
+                    <td className={`py-3.5 font-bold ${titleColor}`}>{regra.indicador}</td>
+                    <td className="py-3.5 font-bold text-emerald-600 dark:text-emerald-400 font-mono">{regra.saudavel}</td>
+                    <td className="py-3.5 font-bold text-amber-600 dark:text-amber-400 font-mono">{regra.atencao}</td>
+                    <td className={`py-3.5 ${subtitleColor} text-xs md:text-sm`}>{regra.acao}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {d.nota_remanejamento && (
+            <div className="mt-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-700 dark:text-blue-300 flex items-start gap-3">
+              <span className="text-base shrink-0">🔄</span>
+              <span><strong>Remanejamento Dinâmico:</strong> {d.nota_remanejamento}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  if (type === 'quarterly_calendar') {
+    return (
+      <div className="flex flex-col max-w-5xl mx-auto w-full gap-8">
+        <div className="text-center">
+          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} mb-3`}>{d.titulo}</h2>
+          <p className={`text-base md:text-lg ${subtitleColor} max-w-3xl mx-auto`}>{d.subtitulo}</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {d.meses?.map((item: any, idx: number) => {
+            const badgeColor = idx === 0 
+              ? 'bg-blue-500/10 border-blue-500/30 text-blue-600 dark:text-blue-400' 
+              : idx === 1 
+              ? 'bg-amber-500/10 border-amber-500/30 text-amber-600 dark:text-amber-400' 
+              : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
+
+            const borderHighlight = idx === 0 
+              ? 'border-t-blue-500' 
+              : idx === 1 
+              ? 'border-t-amber-500' 
+              : 'border-t-emerald-500'
+
+            return (
+              <div 
+                key={idx} 
+                className={`${cardBg} p-7 rounded-2xl border-2 border-t-4 ${borderHighlight} ${isLight ? 'border-zinc-200 shadow-lg' : 'border-zinc-800 shadow-xl'} flex flex-col justify-between gap-4`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-2xl font-black tracking-tight">{item.mes}</span>
+                    <span className={`px-2.5 py-1 rounded-lg border text-[10px] font-black uppercase tracking-wider ${badgeColor}`}>
+                      Mês 0{idx + 1}
+                    </span>
+                  </div>
+                  <h4 className={`text-base font-bold ${titleColor} mb-2`}>{item.etapa}</h4>
+                  <p className={`text-xs md:text-sm ${subtitleColor} leading-relaxed`}>{item.descricao}</p>
+                </div>
+
+                <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center gap-2 text-xs font-semibold text-red-600 dark:text-red-400">
+                  <span>🎯</span>
+                  <span>{item.destaque}</span>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     )
