@@ -25,15 +25,16 @@ const themeMap: Record<string, string> = {
   "17_objetivo_smart": "bg-black text-zinc-300 border-zinc-900",
   "13_estrategia": "bg-white text-zinc-900 border-zinc-200",
   "13_estrategia_campanhas": "bg-zinc-50 text-zinc-900 border-zinc-200",
-  "21_criativos": "bg-zinc-100 text-zinc-900 border-zinc-200",
+  "13_detalhes_trafego": "bg-zinc-100 text-zinc-900 border-zinc-200",
   "18_drawflow_funil": "bg-zinc-900 text-zinc-100 border-zinc-800",
+  "21_criativos": "bg-zinc-950 text-zinc-300 border-zinc-900",
   "19_cronograma": "bg-white text-zinc-900 border-zinc-200",
   "20_plano_midia": "bg-zinc-50 text-zinc-900 border-zinc-200"
 }
 
 function getSectionTheme(id: string, type: string) {
   if (themeMap[id]) return themeMap[id]
-  if (['competitor_benchmark', 'campaign_strategy_boxes'].includes(type)) return 'bg-zinc-100 text-zinc-900 border-zinc-200'
+  if (['competitor_benchmark', 'campaign_strategy_boxes', 'traffic_strategy_placeholder'].includes(type)) return 'bg-zinc-100 text-zinc-900 border-zinc-200'
   if (['moodboard_identity', 'spreadsheet_placeholder'].includes(type)) return 'bg-white text-zinc-900 border-zinc-200'
   if (['process_timeline', 'funnel_flow_diagram', 'visual_drawflow'].includes(type)) return 'bg-black text-zinc-300 border-zinc-900'
   if (['smart_goal_okr'].includes(type)) return 'bg-zinc-900 text-zinc-300 border-zinc-800'
@@ -261,11 +262,6 @@ function RenderBlock({ slide }: { slide: any }) {
   if (type === 'cover') {
     return (
       <div className="flex flex-col items-center justify-center min-h-[80vh] text-center space-y-8">
-        <div className="flex items-center gap-3">
-          <span className="text-xl md:text-2xl font-serif text-zinc-400 tracking-widest uppercase">{d.logo_agencia}</span>
-          <span className="text-zinc-500 font-light">•</span>
-          <span className="text-xl md:text-2xl font-bold text-red-500 tracking-wider uppercase">{d.logo_cliente}</span>
-        </div>
         <h1 className="text-5xl md:text-7xl font-bold text-white max-w-4xl leading-tight tracking-tight">
           {d.titulo_principal}
         </h1>
@@ -275,7 +271,6 @@ function RenderBlock({ slide }: { slide: any }) {
         </h2>
         <div className="pt-12 flex flex-col items-center gap-4 text-zinc-500">
           <p className="text-lg tracking-wide uppercase font-semibold text-zinc-400">{d.data_apresentacao}</p>
-          <p className="max-w-xl text-sm leading-relaxed">{d.legenda_rodape}</p>
         </div>
       </div>
     )
@@ -304,13 +299,6 @@ function RenderBlock({ slide }: { slide: any }) {
               </div>
             )
           })}
-        </div>
-        <div className="mt-20 text-center">
-          {d.label_fase_rodape && (
-            <p className={`inline-block px-6 py-2 rounded-full ${isLight ? 'bg-red-100 text-red-700 border-red-200' : 'bg-red-950/30 text-red-400 border-red-900/50'} font-semibold text-sm`}>
-              {d.label_fase_rodape}
-            </p>
-          )}
         </div>
       </div>
     )
@@ -737,8 +725,8 @@ function RenderBlock({ slide }: { slide: any }) {
           </p>
         </div>
 
-        {/* 2 Key Results Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Key Results Grid */}
+        <div className={`grid ${d.kr2_texto ? 'md:grid-cols-2' : 'grid-cols-1 max-w-2xl mx-auto'} gap-6`}>
           <div className="bg-black/60 border border-red-900/40 p-6 rounded-2xl flex flex-col gap-3 backdrop-blur-sm">
             <div className="flex items-center justify-between">
               <span className="px-3 py-1 rounded-lg bg-red-950 border border-red-800 text-red-400 font-black font-mono text-sm">KR 1</span>
@@ -748,14 +736,16 @@ function RenderBlock({ slide }: { slide: any }) {
             <p className="text-sm text-zinc-300 leading-relaxed">{d.kr1_texto}</p>
           </div>
 
-          <div className="bg-black/60 border border-red-900/40 p-6 rounded-2xl flex flex-col gap-3 backdrop-blur-sm">
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-lg bg-emerald-950 border border-emerald-800 text-emerald-400 font-black font-mono text-sm">KR 2</span>
-              <span className="text-xs text-zinc-400 uppercase font-semibold">Rentabilidade</span>
+          {d.kr2_texto && (
+            <div className="bg-black/60 border border-red-900/40 p-6 rounded-2xl flex flex-col gap-3 backdrop-blur-sm">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-lg bg-emerald-950 border border-emerald-800 text-emerald-400 font-black font-mono text-sm">KR 2</span>
+                <span className="text-xs text-zinc-400 uppercase font-semibold">Rentabilidade</span>
+              </div>
+              <h4 className="text-base font-bold text-white">Retorno sobre Investimento</h4>
+              <p className="text-sm text-zinc-300 leading-relaxed">{d.kr2_texto}</p>
             </div>
-            <h4 className="text-base font-bold text-white">Retorno sobre Investimento</h4>
-            <p className="text-sm text-zinc-300 leading-relaxed">{d.kr2_texto}</p>
-          </div>
+          )}
         </div>
       </div>
     )
@@ -763,17 +753,103 @@ function RenderBlock({ slide }: { slide: any }) {
 
   if (type === 'campaign_strategy_boxes') {
     return (
-      <div>
-        <h2 className={`text-4xl font-bold ${titleColor} text-center mb-16`}>{d.titulo}</h2>
-        <div className="flex flex-col md:flex-row gap-6 w-full">
-          {d.boxes?.map((box: any, i: number) => (
-            <div key={i} className={`flex-1 ${cardBg} border rounded-2xl p-8 flex flex-col shadow-sm hover:-translate-y-1 transition-transform`}>
-              <span className="text-5xl font-black text-red-600 mb-4">{box.percentual}</span>
-              <h3 className={`text-2xl font-bold ${titleColor} mb-4`}>{box.nome}</h3>
-              <p className={`text-base ${subtitleColor} leading-relaxed`}>{box.detalhes}</p>
-            </div>
-          ))}
+      <div className="w-full max-w-5xl mx-auto flex flex-col">
+        <div className="text-center mb-10">
+          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} mb-4`}>{d.titulo}</h2>
+          <div className="w-16 h-1 bg-red-600 mx-auto" />
         </div>
+
+        <div className="flex flex-col gap-5 w-full">
+          {d.boxes?.map((box: any, i: number) => {
+            const badgeColor = i === 0 
+              ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400' 
+              : i === 1 
+              ? 'bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400' 
+              : 'bg-amber-500/10 border-amber-500/30 text-amber-600 dark:text-amber-400'
+
+            return (
+              <div 
+                key={i} 
+                className={`w-full ${cardBg} border-2 ${isLight ? 'border-zinc-200 shadow-md hover:border-zinc-300' : 'border-zinc-800 shadow-xl hover:border-zinc-700'} rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all hover:shadow-2xl`}
+              >
+                {/* Left Tag / Badge Column */}
+                <div className="flex flex-col items-start justify-center shrink-0 md:w-64 border-b md:border-b-0 md:border-r border-zinc-200 dark:border-zinc-800 pb-4 md:pb-0 md:pr-6">
+                  <span className={`px-3 py-1 rounded-lg border text-xs font-black uppercase tracking-wider mb-2 ${badgeColor}`}>
+                    {box.percentual}
+                  </span>
+                  <h3 className={`text-xl font-black ${titleColor} leading-tight`}>
+                    {box.nome}
+                  </h3>
+                </div>
+
+                {/* Right Content / Description Column */}
+                <div className="flex-1 flex items-center">
+                  <p className={`text-sm md:text-base ${subtitleColor} leading-relaxed font-normal`}>
+                    {box.detalhes}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
+
+  if (type === 'traffic_strategy_placeholder') {
+    return (
+      <div className="flex flex-col gap-10 w-full max-w-6xl mx-auto">
+        <div className="flex flex-col items-center text-center">
+          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} max-w-4xl leading-tight`}>{d.titulo}</h2>
+          <p className={`text-base md:text-lg ${subtitleColor} mt-3 max-w-3xl leading-relaxed`}>{d.subtitulo}</p>
+        </div>
+
+        {/* Media / Diagram Placeholder Area */}
+        <div className="w-full">
+          {d.imagem_url ? (
+            <div className={`w-full rounded-3xl border-2 ${isLight ? 'border-zinc-200 shadow-2xl bg-white' : 'border-zinc-800 shadow-2xl bg-zinc-900'} overflow-hidden relative group`}>
+              <img 
+                src={d.imagem_url} 
+                alt={d.titulo || "Detalhes da Estratégia de Tráfego"} 
+                className="w-full h-auto object-contain cursor-pointer transition-transform duration-300 group-hover:scale-[1.01]" 
+                onClick={() => setExpandedImage(d.imagem_url)}
+              />
+              <div 
+                className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+                onClick={() => setExpandedImage(d.imagem_url)}
+              >
+                <span className="px-5 py-2.5 bg-black/80 backdrop-blur-sm text-white text-sm font-bold rounded-xl border border-white/20 shadow-2xl">
+                  🔍 Clique para expandir em tela cheia
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className={`w-full rounded-3xl border-2 border-dashed ${isLight ? 'border-zinc-300 bg-zinc-50/80 shadow-sm' : 'border-zinc-800 bg-zinc-900/40 shadow-inner'} p-16 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden group`}>
+              <div className="w-16 h-16 rounded-2xl bg-red-600/10 border border-red-600/20 flex items-center justify-center text-red-600 mb-5 group-hover:scale-110 transition-transform">
+                <BarChart2 className="w-8 h-8" />
+              </div>
+              <h3 className={`text-xl md:text-2xl font-bold ${titleColor}`}>
+                {d.image_placeholder || "Espaço reservado para o Diagrama de Estrutura de Tráfego"}
+              </h3>
+            </div>
+          )}
+        </div>
+
+        {expandedImage && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-12 animate-in fade-in duration-300"
+            onClick={() => setExpandedImage(null)}
+          >
+            <div className="relative max-w-7xl w-full h-full flex items-center justify-center">
+              <img 
+                src={expandedImage} 
+                alt="Fullscreen" 
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300" 
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+        )}
       </div>
     )
   }
@@ -787,7 +863,7 @@ function RenderBlock({ slide }: { slide: any }) {
         <p className={`text-lg ${subtitleColor} mb-16 text-center max-w-2xl`}>{d.subtitulo}</p>
 
         {/* Horizontal Workflow timeline */}
-        <div className="flex flex-col md:flex-row items-center w-full justify-between relative mb-12 px-4">
+        <div className="flex flex-col md:flex-row items-center w-full justify-between relative mb-4 px-4">
           <div className={`hidden md:block absolute top-8 left-12 right-12 h-1 -translate-y-1/2 rounded-full ${isLight ? 'bg-zinc-200' : 'bg-zinc-800'} z-0`} />
 
           {d.passos?.map((passo: any, i: number) => {
@@ -803,24 +879,6 @@ function RenderBlock({ slide }: { slide: any }) {
             )
           })}
         </div>
-
-        {/* Role breakdown note */}
-        <div className={`w-full p-6 rounded-2xl border ${cardBg} grid md:grid-cols-2 gap-4 text-sm leading-relaxed`}>
-          <div className="flex items-start gap-3">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-600 mt-1.5 shrink-0" />
-            <div>
-              <strong className={titleColor}>Papel da V4 Company:</strong>
-              <p className={subtitleColor}>Criação de roteiros, argumentos de venda, design, edição dos criativos e gestão de tráfego com otimização diária.</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
-            <div>
-              <strong className={titleColor}>Papel da Garantida Motos:</strong>
-              <p className={subtitleColor}>Captação bruta nas lojas físicas com celular/microfone, atendimento imediato aos leads no WhatsApp e alimentação do CRM.</p>
-            </div>
-          </div>
-        </div>
       </div>
     )
   }
@@ -835,23 +893,30 @@ function RenderBlock({ slide }: { slide: any }) {
           </div>
         </div>
         
-        <div className="min-w-[920px] w-full flex flex-col items-center relative">
-          {/* Top Node */}
-          <div className="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border-2 border-zinc-700 text-white font-extrabold px-10 py-4 rounded-2xl flex items-center gap-3 shadow-2xl z-10">
-            <DollarSign className="w-6 h-6 text-emerald-400" />
-            <div className="flex flex-col text-left">
-              <span className="text-xs uppercase tracking-widest text-zinc-400 font-semibold">Orçamento Total de Mídia Paga</span>
-              <span className="text-2xl text-emerald-400 font-black">R$ 4.000,00 / mês</span>
+        <div className="min-w-[960px] w-full flex flex-col items-center relative">
+          {/* Top Node: Budget Scenarios */}
+          <div className="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border-2 border-zinc-700 text-white font-extrabold px-10 py-4 rounded-2xl flex items-center gap-6 shadow-2xl z-10">
+            <div className="flex items-center gap-3">
+              <DollarSign className="w-6 h-6 text-emerald-400" />
+              <div className="flex flex-col text-left">
+                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário 1 (Básico)</span>
+                <span className="text-xl text-emerald-400 font-black">R$ 4.000 / mês</span>
+              </div>
+            </div>
+            <div className="h-8 w-px bg-zinc-700" />
+            <div className="flex items-center gap-3">
+              <Rocket className="w-6 h-6 text-red-500" />
+              <div className="flex flex-col text-left">
+                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário 2 (Recomendado V4)</span>
+                <span className="text-xl text-red-400 font-black">R$ 6.000 / mês</span>
+              </div>
             </div>
           </div>
 
           <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
-          <div className={`w-[85%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
+          <div className={`w-[60%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
           
-          <div className="flex w-[85%] justify-between">
-            <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
-              <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
-            </div>
+          <div className="flex w-[60%] justify-between">
             <div className={`h-10 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'} relative`}>
               <ChevronRight className={`absolute -bottom-2 -left-2.5 w-5 h-5 ${isLight ? 'text-zinc-400' : 'text-zinc-500'} rotate-90`} />
             </div>
@@ -860,61 +925,52 @@ function RenderBlock({ slide }: { slide: any }) {
             </div>
           </div>
 
-          {/* 3 Campaign Channels */}
-          <div className="flex w-full justify-between gap-6 px-4 mt-2 z-10">
-            {/* Branch 1: Meta Ads (75%) */}
-            <div className={`flex-[1.4] ${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-emerald-500/60 relative flex flex-col justify-between overflow-hidden`}>
+          {/* 2 Campaign Channels (Meta Ads Teresina/Timon & São Miguel) */}
+          <div className="grid md:grid-cols-2 gap-8 w-full max-w-4xl px-4 mt-2 z-10">
+            {/* Branch 1: Meta Ads Teresina + Timon */}
+            <div className={`w-full ${cardBg} p-7 rounded-2xl text-left shadow-xl border-2 border-emerald-500/60 relative flex flex-col justify-between overflow-hidden`}>
               <div className="absolute top-0 right-0 bg-emerald-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                75% (R$ 3.000)
+                Motor Principal (65%)
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Motor Principal</span>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Raio Conjunto (30 km)</span>
                 </div>
-                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Meta Ads (WhatsApp Direto)</h4>
-                <p className="text-2xl font-black text-emerald-600 mb-3">R$ 3.000 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
-                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
-                  <p><strong>Ofertas:</strong> Shineray Jet (R$ 13.790), Financiamento Rápido, Compra Garantida e Negativados.</p>
-                  <p className="text-emerald-700 dark:text-emerald-400 font-medium">⚡ Segmentação geolocalizada: Teresina, Timon e São Miguel do Tapuio</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Branch 2: Google Ads (15%) */}
-            <div className={`flex-[1] ${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-indigo-500/60 relative flex flex-col justify-between overflow-hidden`}>
-              <div className="absolute top-0 right-0 bg-indigo-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                15% (R$ 600)
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
-                  <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Intenção de Compra</span>
-                </div>
-                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Google Search & Local</h4>
-                <p className="text-2xl font-black text-indigo-600 mb-3">R$ 600 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
-                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
-                  <p><strong>Público:</strong> Buscas por 'motos novas/seminovas em Teresina / Timon' e concessionárias.</p>
-                  <p className="text-indigo-700 dark:text-indigo-400 font-medium">📍 Tráfego quente para ligação e rota até as lojas físicas</p>
+                <h4 className={`font-black text-2xl mb-1 ${titleColor}`}>Teresina (Matriz) & Timon</h4>
+                <p className="text-2xl font-black text-emerald-600 mb-3">R$ 2.700 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
+                <div className={`text-xs md:text-sm ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-2`}>
+                  <p><strong>Ofertas:</strong> Shineray Jet (R$ 13.790), Shineray 170 e Seminovas com garantia.</p>
+                  <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs space-y-1">
+                    <p className="font-bold text-emerald-700 dark:text-emerald-400">1. Awareness & Prova Social:</p>
+                    <p className="text-zinc-600 dark:text-zinc-400">Vídeos reais de entregas e equipe no pátio para gerar conexão com o público.</p>
+                    <p className="font-bold text-emerald-700 dark:text-emerald-400 pt-1">2. Conversão Direta:</p>
+                    <p className="text-zinc-600 dark:text-zinc-400">Tração com anúncios diretos para WhatsApp e esteira comercial.</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Branch 3: Remarketing & Feirões (10%) */}
-            <div className={`flex-[1] ${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-amber-500/60 relative flex flex-col justify-between overflow-hidden`}>
-              <div className="absolute top-0 right-0 bg-amber-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                10% (R$ 400)
+            {/* Branch 2: Meta Ads São Miguel do Tapuio */}
+            <div className={`w-full ${cardBg} p-7 rounded-2xl text-left shadow-xl border-2 border-red-500/60 relative flex flex-col justify-between overflow-hidden`}>
+              <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-xs px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                Regional Interior (35%)
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                  <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Reengajamento</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                  <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">Polo a 160 km</span>
                 </div>
-                <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Remarketing & Feirões</h4>
-                <p className="text-2xl font-black text-amber-600 mb-3">R$ 400 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
-                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
-                  <p><strong>Foco:</strong> Recuperação de contatos antigos do CRM e impulsos em dias de Feirão da Loja.</p>
-                  <p className="text-amber-700 dark:text-amber-400 font-medium">🔥 Conversão de indecisos e aceleração de final de mês</p>
+                <h4 className={`font-black text-2xl mb-1 ${titleColor}`}>São Miguel do Tapuio</h4>
+                <p className="text-2xl font-black text-red-600 mb-3">R$ 1.300 <span className="text-xs font-semibold text-zinc-500">/mês</span></p>
+                <div className={`text-xs md:text-sm ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-2`}>
+                  <p><strong>Público:</strong> Trabalhadores rurais e autônomos buscando economia e aprovação ágil.</p>
+                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-xs space-y-1">
+                    <p className="font-bold text-red-700 dark:text-red-400">1. Awareness Regional:</p>
+                    <p className="text-zinc-600 dark:text-zinc-400">Apresentação da loja e vídeos de clientes locais para criar autoridade.</p>
+                    <p className="font-bold text-red-700 dark:text-red-400 pt-1">2. Conversão Direta:</p>
+                    <p className="text-zinc-600 dark:text-zinc-400">WhatsApp dedicado da equipe local para fechar no balcão.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -930,12 +986,12 @@ function RenderBlock({ slide }: { slide: any }) {
                 </div>
                 <div>
                   <span className="text-2xl font-black block">Central de Atendimento & CRM Kanban</span>
-                  <span className="text-xs font-normal text-red-100">Distribuição automática de leads entre 7 a 10 consultores nas 3 unidades</span>
+                  <span className="text-xs font-normal text-red-100">Distribuição automática de leads e follow-up com Joaquim e os 7 a 10 consultores</span>
                 </div>
               </div>
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl text-right shrink-0">
                 <span className="text-[10px] uppercase block text-red-100 font-bold">Capacidade</span>
-                <span className="text-base font-black">20-25 Leads/Dia</span>
+                <span className="text-base font-black">25-40 Leads/Dia</span>
               </div>
             </div>
           </div>
@@ -948,8 +1004,8 @@ function RenderBlock({ slide }: { slide: any }) {
             <div className={`${isLight ? 'bg-emerald-50 border-emerald-300 text-emerald-800' : 'bg-emerald-950/40 border-emerald-500/50 text-emerald-400'} border-2 p-5 rounded-2xl flex items-center gap-3 shadow-lg`}>
               <Store className="w-7 h-7 text-emerald-500 shrink-0" />
               <div className="text-left">
-                <span className="text-base font-black block">Fechamento na Loja Física & Digital</span>
-                <span className={`text-xs ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>Visita presencial, test-ride e assinatura de contrato</span>
+                <span className="text-base font-black block">Fechamento na Loja Física & Feirões</span>
+                <span className={`text-xs ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>Visita presencial, simulação de crédito, test-ride e entrega</span>
               </div>
             </div>
 
@@ -958,7 +1014,7 @@ function RenderBlock({ slide }: { slide: any }) {
               <RefreshCw className="w-7 h-7 text-blue-500 shrink-0" />
               <div className="text-left">
                 <span className="text-base font-black block">Pós-Venda & Programa de Indicação</span>
-                <span className={`text-xs ${isLight ? 'text-blue-700' : 'text-blue-300'}`}>Revisão gratuita/troca de óleo por indicação de amigos</span>
+                <span className={`text-xs ${isLight ? 'text-blue-700' : 'text-blue-300'}`}>Revisão gratuita na oficina própria por indicação de amigos</span>
               </div>
             </div>
           </div>
@@ -1005,41 +1061,91 @@ function RenderBlock({ slide }: { slide: any }) {
 
   if (type === 'spreadsheet_placeholder') {
     return (
-      <div>
-        <div className="flex items-center gap-4 mb-10">
-          <FileSpreadsheet className="w-10 h-10 text-red-600" />
-          <h2 className={`text-4xl font-bold ${titleColor}`}>{d.titulo}</h2>
-        </div>
-        
-        <div className={`w-full rounded-2xl border ${cardBg} p-8 shadow-xl flex flex-col gap-6`}>
-          <div className="grid md:grid-cols-4 gap-4">
-            {[
-              { etapa: "1. Setup & Acessos", desc: "Coleta de acessos ao Meta Ads, BM e Google Meu Negócio", responsavel: "Garantida + V4", prazo: "Imediato" },
-              { etapa: "2. Validação de Roteiros", desc: "Envio de scripts e direcionamentos de cena para Shineray Jet e Negativados", responsavel: "V4 (Andreas / Manu)", prazo: "Dias 1-3" },
-              { etapa: "3. Captação na Loja", desc: "Gravação de vídeos brutos com os consultores e motos no pátio", responsavel: "Garantida Motos", prazo: "Dias 4-6" },
-              { etapa: "4. Lançamento de Mídia", desc: "Edição, aprovação final e subida das campanhas no ar", responsavel: "V4 (Emanuelle / Giovana)", prazo: "Dia 29/Set" }
-            ].map((item, idx) => (
-              <div key={idx} className={`p-5 rounded-xl border ${isLight ? 'bg-zinc-50 border-zinc-200' : 'bg-zinc-950 border-zinc-800'} flex flex-col justify-between gap-3`}>
-                <div>
-                  <span className="text-xs font-bold text-red-600 uppercase tracking-wider">{item.etapa}</span>
-                  <p className={`text-sm font-medium ${titleColor} mt-2`}>{item.desc}</p>
-                </div>
-                <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800 flex justify-between text-xs text-zinc-500">
-                  <span>{item.responsavel}</span>
-                  <span className="font-bold text-red-500">{item.prazo}</span>
-                </div>
-              </div>
-            ))}
+      <div className="flex flex-col gap-8 w-full max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-red-600/10 border border-red-600/20 rounded-2xl">
+              <FileSpreadsheet className="w-8 h-8 text-red-600" />
+            </div>
+            <div>
+              <h2 className={`text-3xl md:text-4xl font-bold ${titleColor}`}>{d.titulo}</h2>
+              <p className={`text-sm ${subtitleColor} mt-1`}>Acompanhamento tático semanal de tarefas, entregáveis e responsáveis</p>
+            </div>
           </div>
 
-          <div className={`p-5 rounded-xl ${isLight ? 'bg-amber-50 border-amber-200 text-amber-900' : 'bg-amber-950/20 border-amber-900/40 text-amber-300'} border flex items-center justify-between text-sm`}>
-            <div className="flex items-center gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
-              <span><strong>Reunião de Acompanhamento:</strong> Análise semanal de CPL, MQL, SQL e vendas por unidade com a equipe comercial.</span>
-            </div>
-            <span className="font-bold shrink-0">Ciclo Semanal</span>
-          </div>
+          {d.link_planilha && (
+            <a
+              href={d.link_planilha}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-sm shadow-lg shadow-emerald-600/20 transition-all shrink-0 cursor-pointer"
+            >
+              <FileSpreadsheet className="w-4 h-4" />
+              <span>Acessar Planilha Completa</span>
+              <ExternalLink className="w-4 h-4 opacity-80" />
+            </a>
+          )}
         </div>
+        
+        {d.imagem_url ? (
+          <div className="flex flex-col gap-4">
+            <div className={`w-full rounded-2xl border-2 ${isLight ? 'border-zinc-200 shadow-xl bg-white' : 'border-zinc-800 shadow-2xl bg-zinc-900'} overflow-hidden relative group`}>
+              <img 
+                src={d.imagem_url} 
+                alt={d.titulo || "Cronograma de Aceleração"} 
+                className="w-full h-auto object-contain cursor-pointer transition-transform duration-300 group-hover:scale-[1.01]" 
+                onClick={() => setExpandedImage(d.imagem_url)}
+              />
+              <div 
+                className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+                onClick={() => setExpandedImage(d.imagem_url)}
+              >
+                <span className="px-5 py-2.5 bg-black/80 backdrop-blur-sm text-white text-sm font-bold rounded-xl border border-white/20 shadow-2xl">
+                  🔍 Clique para expandir em tela cheia
+                </span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className={`w-full rounded-2xl border ${cardBg} p-8 shadow-xl flex flex-col gap-6`}>
+            <div className="grid md:grid-cols-5 gap-4">
+              {[
+                { etapa: "1. Setup & Roteiros", desc: "Acessos ao Meta Ads, alinhamento técnico e roteiros em vídeo para Shineray Jet e Seminovas", responsavel: "V4 + Garantida", prazo: "Semana 1" },
+                { etapa: "2. Alinhamento CRM", desc: "Reunião de estruturação comercial: MQL/SQL, etapas do kanban e SLA de resposta rápida com Joaquim", responsavel: "V4 + Joaquim", prazo: "Semana 2" },
+                { etapa: "3. Subida de Campanhas", desc: "Lançamento oficial no Meta Ads (Teresina/Timon e São Miguel) com calibração diária de CPL (R$ 4-5)", responsavel: "V4 Performance", prazo: "Semanas 3-4" },
+                { etapa: "4. Otimização & Pré-Black", desc: "Novos roteiros de vídeo na loja, refinamento de conversão por consultor e aquecimento para Black Friday", responsavel: "V4 + Equipe", prazo: "Mês 2 (Novembro)" },
+                { etapa: "5. Feirão & Escala", desc: "Campanha especial 'Ano Novo de Moto Nova', consolidação dos KRs e proposta de expansão de verba", responsavel: "V4 + Douglas", prazo: "Mês 3 (Dezembro)" }
+              ].map((item, idx) => (
+                <div key={idx} className={`p-5 rounded-xl border ${isLight ? 'bg-zinc-50 border-zinc-200' : 'bg-zinc-950 border-zinc-800'} flex flex-col justify-between gap-3`}>
+                  <div>
+                    <span className="text-xs font-bold text-red-600 uppercase tracking-wider">{item.etapa}</span>
+                    <p className={`text-sm font-medium ${titleColor} mt-2`}>{item.desc}</p>
+                  </div>
+                  <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800 flex justify-between text-xs text-zinc-500">
+                    <span>{item.responsavel}</span>
+                    <span className="font-bold text-red-500">{item.prazo}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {expandedImage && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-12 animate-in fade-in duration-300"
+            onClick={() => setExpandedImage(null)}
+          >
+            <div className="relative max-w-7xl w-full h-full flex items-center justify-center">
+              <img 
+                src={expandedImage} 
+                alt="Fullscreen" 
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300" 
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+        )}
       </div>
     )
   }

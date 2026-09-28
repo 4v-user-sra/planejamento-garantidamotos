@@ -25,15 +25,15 @@ export const presentationData = {
       "content_slots": {
         "titulo": "Recapitulando sua jornada de aceleração",
         "etapas_timeline": [
-          "Reunião Comercial (15/Set)",
-          "Alinhamento Interno V4",
-          "Kickoff Operacional (22/Set)",
+          "Reunião Comercial",
+          "Kickoff Operacional",
+          "Alinhamento Interno de Performance",
           "Elaboração do Planejamento",
-          "Apresentação & Validação (29/Set)"
+          "Apresentação & Validação"
         ],
-        "etapa_atual_destacada": "Apresentação & Validação (29/Set)",
+        "etapa_atual_destacada": "Apresentação & Validação",
         "label_fase_rodape": "Você está na fase de validação estratégica e setup de campanhas",
-        "anotacoes_contextuais": "Kickoff realizado com Douglas (Diretor), Emanuelly (Admin/Financeiro), Joaquim (Comercial/CRM), Isabelle e equipe V4 (Felipe, Andreas, Manu, Giovana). Próxima etapa: subida de campanhas e calibração de métricas."
+        "anotacoes_contextuais": "Alinhamento com Douglas (Diretor), Emanuelly (Admin/Financeiro), Joaquim (Comercial/CRM) e time de performance V4 (Felipe Stefanato, Thays Andrade, Emanuelle Sena, Giovanna Mariotto e Andreas Rocha). Foco: Meta Ads para WhatsApp, 2 cenários de verba (R$ 4k vs R$ 6k) e acompanhamento comercial rigoroso no CRM."
       }
     },
     {
@@ -43,15 +43,15 @@ export const presentationData = {
         "titulo": "Sumário Executivo",
         "itens_agenda": [
           "Diagnóstico do Cenário & Histórico de Vendas",
-          "Estrutura Comercial & Implementação do CRM",
-          "Diferenciais Inegociáveis & Modelos Exclusivos",
+          "Auditoria da Vitrine Digital & Site",
           "Benchmarking Competitivo Regional",
+          "Diferenciais Inegociáveis da Garantida",
           "Identidade Visual & Diretrizes da Marca",
           "Personas & Perfil do Cliente Ideal (Classes C, D e B)",
           "Objetivo SMART & OKRs (Fase de Calibragem)",
-          "Estratégia de Aquisição & Alocação de Verba",
+          "Estratégia de Aquisição & Cenários de Verba",
           "Drawflow Visual do Funil Comercial",
-          "Workflow Audiovisual & Plano de Metas"
+          "Workflow Audiovisual & Playbook Operacional"
         ]
       }
     },
@@ -139,61 +139,40 @@ export const presentationData = {
       "slide_type": "meta_ads_analysis",
       "content_slots": {
         "titulo": "Diagnóstico de Tráfego Pago & Histórico de Vendas",
-        "investimento": "R$ 4.000/mês",
-        "cpa_medio": "R$ 600 - R$ 700",
+        "investimento": "R$ 4.000/mês (Plano Atual)",
+        "cpa_medio": "R$ 4,00 - R$ 5,00 (Meta CPL)",
         "verba_perdida": "3 Meses Inativo",
         "venda_rastreada": {
           "valor": "Pico de R$ 1.000.000",
           "pedidos": 100,
-          "origem": "Mês de Março (100 Motos Vendidas com Tráfego Agressivo)"
+          "origem": "Mês de Março (100 Motos Vendidas com Tráfego Agressivo Ativo)"
         },
         "venda_zero": {
           "valor": "Queda para R$ 400.000",
           "pedidos": 0,
-          "origem": "Período com 3 trocas de agência e biblioteca de anúncios inativa"
+          "origem": "Período recente com 3 trocas de agência e tráfego pago 100% desligado"
         },
         "historico_mensal": [
-          { "mes": "Mar", "pedidos": 100, "cpa": 600, "investimento": "R$ 8.000 - 10.000", "obs": "Pico histórico da Garantida: R$ 1M faturados com 100 motos vendidas" },
+          { "mes": "Mar", "pedidos": 100, "cpa": 600, "investimento": "R$ 8.000 - 10.000", "obs": "Pico histórico da Garantida: R$ 1M faturados com 100 motos vendidas e marketing ativo" },
           { "mes": "Abr", "pedidos": 65, "cpa": 620, "investimento": "R$ 6.500", "obs": "Início da instabilidade e primeira troca de assessoria" },
-          { "mes": "Mai", "pedidos": 42, "cpa": 680, "investimento": "R$ 4.000", "obs": "Queda de investimento e redução na qualificação de leads" },
+          { "mes": "Mai", "pedidos": 42, "cpa": 680, "investimento": "R$ 4.000", "obs": "Queda de investimento e descontinuidade de campanhas" },
           { "mes": "Jun", "pedidos": 35, "cpa": 710, "investimento": "R$ 3.500", "obs": "Tráfego sem estratégia e desalinhamento de equipe" },
           { "mes": "Jul", "pedidos": 30, "cpa": 750, "investimento": "R$ 3.000", "obs": "Queda acentuada; lojas secundárias no ponto crítico" },
-          { "mes": "Ago", "pedidos": 70, "cpa": 590, "investimento": "R$ 3.500", "obs": "Matriz bateu recorde (52 vendas) impulsionada por Feirão interno" },
-          { "mes": "Set", "pedidos": 25, "cpa": 650, "investimento": "R$ 0 (Inativo)", "obs": "Tráfego inativo há 3 meses; demissão do gestor anterior" }
+          { "mes": "Ago", "pedidos": 70, "cpa": 590, "investimento": "R$ 3.500", "obs": "Matriz bateu 52 vendas impulsionada por Feirão interno presencial" },
+          { "mes": "Set", "pedidos": 25, "cpa": 650, "investimento": "R$ 0 (Inativo)", "obs": "Tráfego inativo há 3 meses; captação dependente de balcão e indicação" }
         ],
         "cpa_referencia_historica": 650,
         "funcionou": [
-          "Feirões promocionais agressivos com ofertas de entrada facilitada (20 motos vendidas em 2 dias na Matriz).",
-          "Campanhas de baixo custo por lead (R$ 2,00 a R$ 2,70) para programas de negativados e financiamentos rápidos.",
-          "Foco nos modelos de maior saída: Shineray Jet (R$ 13.790) e opções seminovas revisadas com garantia.",
-          "Atendimento caloroso e humano, com facilidade extrema na aceitação de seminovos como entrada."
+          "Vídeos reais de entrega de chaves, comemorações com buzinas/confetes e vendedor do mês geram alta conexão regional ('o feio que converte').",
+          "Feirões promocionais presenciais agressivos: histórico de até 20 motos vendidas em 2 dias e pico de 52 vendas na Matriz em agosto.",
+          "Modelos campeões de saída rápida: Shineray Jet (R$ 13.790), Shineray 170 e Seminovas revisadas com garantia na oficina própria.",
+          "Tradição de mais de 20 anos na região gerando confiança e facilidade na aceitação de seminovos como entrada."
         ],
         "nao_funcionou": [
-          "Trocas consecutivas de 3 agências sem continuidade de dados, testes de criativos e histórico.",
-          "Desligamento do tráfego pago nos últimos 3 meses, sobrecarregando a empresa com dependência exclusiva do balcão.",
-          "Falta de CRM estruturado no passado, permitindo que leads qualificados ficassem sem follow-up comercial.",
-          "Tentativas anteriores de marketing interno sem método e sem capacidade de suportar a cobrança de metas."
-        ]
-      }
-    },
-    {
-      "id": "08_diferenciais",
-      "slide_type": "vertical_feature_list",
-      "content_slots": {
-        "titulo": "Diferenciais Competitivos Inegociáveis",
-        "features": [
-          {
-            "titulo": "Plano Exclusivo Compra Garantida (Patenteado)",
-            "descricao": "Consórcio interno e exclusivo registrado no CPF do Douglas: o cliente começa a contemplar a chave a partir da 6ª/7ª parcela sem depender de sorteio ou concorrência, reduzindo a parcela conforme o lance ou retirando a moto quitada ao fim."
-          },
-          {
-            "titulo": "Acolhimento Humanizado & Foco no Público Popular",
-            "descricao": "Atendimento próximo, direto e sem burocracias intimidatórias para as classes C e D ('foco no povão'). Criação de vínculo real de confiança entre o cliente, consultores e os mecânicos da oficina própria."
-          },
-          {
-            "titulo": "Flexibilidade Comercial Agressiva & Aceitação de Negativados",
-            "descricao": "Soluções reais para quem tem restrições no CPF através do Aluguel com Intenção de Compra (rastreador + seguro vinculados à loja), além de ampla avaliação do seminovo na troca e parcerias com múltiplos bancos."
-          }
+          "Estrutura equivocada no Meta Ads: campanhas anteriores com objetivo de 'Engajamento' para WhatsApp e 'Visita ao Perfil' com chamadas de compra.",
+          "Custo por conversa inflacionado no passado (R$ 8,20 a R$ 10,00/conversa), quando o benchmark de conversão direta é de R$ 4,00 a R$ 5,00.",
+          "Desligamento total do tráfego nos últimos 3 meses, reduzindo as vendas de 100 para ~25-30 motos/mês.",
+          "Ausência de CRM estruturado na rotina dos vendedores, resultando em perda de leads e falta de follow-up."
         ]
       }
     },
@@ -208,22 +187,27 @@ export const presentationData = {
       "id": "10_benchmarking_1",
       "slide_type": "diagnostic_analysis",
       "content_slots": {
-        "titulo_slide": "Benchmarking: Grandes Concessionárias (Honda / Yamaha)",
-        "imagem_url": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80",
+        "titulo_slide": "Benchmarking Concorrente: Asia Motos",
+        "imagem_url": "https://i.imgur.com/LpDViGU.png",
         "insights_estruturados": [
           {
-            "titulo": "Força de Marca e Rede Estabelecida (Ponto Forte Deles)",
-            "texto": "Grandes redes possuem alta autoridade institucional de fábrica e grande investimento publicitário nacional em TV e mídias massivas.",
+            "titulo": "Ataque Frontal com Produto de Maior Liquidez (O que vamos replicar)",
+            "texto": "Eles focam pesadamente em modelos populares, operando no nosso território com a Shineray. Nós vamos fazer exatamente o mesmo, já que determinamos internamente que essa marca é o nosso carro-chefe devido à extrema flexibilidade comercial que ela nos proporciona no balcão.",
             "tipo": "positivo"
           },
           {
-            "titulo": "Burocracia Excessiva e Barreiras de Crédito (Vantagem da Garantida)",
-            "texto": "Exigem score bancário elevado, documentações rígidas e recusam clientes negativados ou sem comprovação formal de renda. A Garantida captura essa enorme demanda com aprovação facilitada e planos próprios.",
-            "tipo": "negativo"
+            "titulo": "Iscas de Tração em Massa & CPL Agressivo (O que vamos replicar)",
+            "texto": "A estratégia deles de gritar descontos funciona como um megafone para atrair curiosos. Nós vamos usar gatilhos diretos semelhantes para gerar um volume absurdo de interessados, despencando o nosso custo por lead para a casa dos R$ 2 e lotando a esteira do nosso novo sistema de CRM para os vendedores espremerem.",
+            "tipo": "positivo"
           },
           {
-            "titulo": "Atendimento Frio e Desvalorização do Usado (Vantagem da Garantida)",
-            "texto": "Ambientes formais que inibem o consumidor das classes C e D, além de avaliação muito baixa na troca da moto usada. A Garantida se destaca pelo acolhimento humano e negociação flexível 'chave na chave'.",
+            "titulo": "Prova Social Forte & Destaques Bem Demarcados (O que vamos replicar)",
+            "texto": "Trabalham o pós-social muito forte nos Destaques do perfil, com separação clara e bem demarcada por categorias: Entregas de Motos a Clientes, Serviços da Oficina e Catálogo de Produtos, transmitindo segurança e prova de entrega para quem chega pelo tráfego.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Ausência de Autoridade Institucional (O que descartamos)",
+            "texto": "Eles não possuem um site institucional sólido, operando apenas com uma Landing Page transacional básica e sem construção de ecossistema integrado ou autoridade de longo prazo.",
             "tipo": "negativo"
           }
         ]
@@ -233,23 +217,49 @@ export const presentationData = {
       "id": "11_benchmarking_2",
       "slide_type": "diagnostic_analysis",
       "content_slots": {
-        "titulo_slide": "Benchmarking: Concorrentes Locais & Concessionárias Avelloz",
-        "imagem_url": "https://images.unsplash.com/photo-1571188654248-7a89213915f7?auto=format&fit=crop&w=1000&q=80",
+        "titulo_slide": "Benchmarking Concorrente: Japan Motos (Honda)",
+        "imagem_url": "https://i.imgur.com/WhbPzMb.png",
         "insights_estruturados": [
           {
-            "titulo": "Presença Regional e Volume de Lojas (Ponto a Observar)",
-            "texto": "Concorrentes locais na mesma avenida e cidades vizinhas atuam com lojas físicas visíveis e equipes de balcão focadas em modelos populares.",
+            "titulo": "Prova Social de Entregas em Grande Escala (O que vamos replicar)",
+            "texto": "O feed deles prioriza fotos e vídeos de clientes reais recebendo a moto. Vamos replicar isso com ainda mais intensidade: nosso público precisa ver pessoas reais saindo com a chave na mão para ter segurança e decisão rápida.",
             "tipo": "positivo"
           },
           {
-            "titulo": "Escassez de Soluções Próprias de Financiamento (Vantagem da Garantida)",
-            "texto": "Dependem 100% de aprovações bancárias tradicionais e não possuem programas inovadores como o Compra Garantida patenteado ou Aluguel com Opção de Compra para negativados.",
+            "titulo": "Conteúdo Descontraído & Bastidores com a Equipe (O que vamos replicar)",
+            "texto": "Utilizam vídeos casuais com os vendedores e narrativas bem-humoradas que quebram o gelo. Vamos adotar esse tom humano e próximo para criar conexão instantânea com as classes C e D, mostrando calor humano no balcão.",
+            "tipo": "positivo"
+          },
+          {
+            "titulo": "Falta de Consistência e Padronização Visual (Ponto Fraco Deles)",
+            "texto": "Apesar do branding forte de fábrica, perdem a mão na linha editorial, deixando o feed visualmente desorganizado e sem uma narrativa estética profissional unificada.",
             "tipo": "negativo"
           },
           {
-            "titulo": "Ausência de Ecossistema Integrado (Vantagem da Garantida)",
-            "texto": "A maioria não possui oficina própria estruturada e loja de peças integrada, enfraquecendo o pós-venda. A Garantida fideliza o cliente gerando recorrência em revisões e indicações de familiares.",
+            "titulo": "Barreira do Consórcio Bancário Tradicional (Vantagem Garantida)",
+            "texto": "Atraem com promessas de parcelas baixas, mas o sistema bancário tradicional rejeita quem tem score baixo ou restrição. A Garantida se posiciona como solução imediata com o exclusivo 'Compra Garantida' e aprovação facilitada.",
             "tipo": "negativo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "08_diferenciais",
+      "slide_type": "vertical_feature_list",
+      "content_slots": {
+        "titulo": "Diferenciais Competitivos Inegociáveis",
+        "features": [
+          {
+            "titulo": "Mais de 20 Anos de Tradição & Autoridade Regional",
+            "descricao": "Presença consolidada e fortíssimo reconhecimento de marca no Piauí e Maranhão, sendo a principal referência de confiança para os clientes das classes C e D frente aos concorrentes da mesma avenida."
+          },
+          {
+            "titulo": "Plano Exclusivo Compra Garantida & Consórcio Próprio",
+            "descricao": "Programa patenteado exclusivo e consórcio próprio: excelente argumento comercial para contorno de objeções de clientes negativados ou sem score bancário, mantendo o foco do tráfego na venda direta de motos."
+          },
+          {
+            "titulo": "Modelos Campeões de Saída & Oficina Própria Integrada",
+            "descricao": "Liderança de vendas com Shineray Jet (R$ 13.790), Shineray 170 e amplo estoque de seminovas revisadas com garantia mecânica e avaliação ágil 'chave na chave' na troca."
           }
         ]
       }
@@ -280,14 +290,12 @@ export const presentationData = {
         "dores_bullets": [
           "Dificuldade severa de aprovação de crédito em bancos e restrições no CPF (nome negativado).",
           "Falta de capital para pagar entradas altas exigidas pelas concessionárias tradicionais.",
-          "Gasto excessivo e perda de horas diárias dependendo do transporte público precário.",
-          "Medo de adquirir moto usada com problemas mecânicos que prejudiquem seu dia de trabalho."
+          "Gasto excessivo e perda de tempo diário dependendo do transporte público precário."
         ],
         "desejos_bullets": [
           "Conquistar uma moto própria econômica (ex: Shineray Jet) para trabalhar e gerar renda diária.",
           "Parcelas acessíveis que caibam no orçamento real do mês (faixa de R$ 300 a R$ 700).",
-          "Atendimento sem burocracia, rápido, acolhedor e sem julgamento por restrições cadastrais.",
-          "Independência e liberdade para sustentar a família e realizar atividades do dia a dia."
+          "Atendimento sem burocracia, rápido, acolhedor e com aprovação facilitada."
         ],
         "objecoes_bullets": [
           "\"Consigo tirar a moto mesmo estando negativado ou com score baixo?\"",
@@ -311,15 +319,13 @@ export const presentationData = {
         "canais": "Instagram, WhatsApp, Google Meu Negócio, Indicação de Amigos",
         "dores_bullets": [
           "Desvalorização abusiva e recusa da moto usada na hora da troca em outras lojas.",
-          "Insegurança com histórico mecânico duvidoso, documentação irregular e multas pendentes.",
-          "Lentidão no atendimento e processos comerciais engessados que fazem perder tempo.",
-          "Falta de opções de motos seminovas bem revisadas com procedência atestada."
+          "Insegurança com histórico mecânico duvidoso, documentação irregular ou falta de garantia.",
+          "Lentidão no atendimento e processos comerciais engessados que fazem perder tempo."
         ],
         "desejos_bullets": [
           "Avaliação justa e facilitada da moto usada na troca 'chave na chave'.",
           "Motos seminovas impecáveis, revisadas e com garantia de procedência da loja.",
-          "Flexibilidade no pagamento (financiamento com parcelas customizadas, consórcio ou cartão).",
-          "Atendimento direto, rápido e transparente via WhatsApp antes da visita à loja física."
+          "Flexibilidade no pagamento (financiamento com parcelas customizadas, consórcio ou cartão)."
         ],
         "objecoes_bullets": [
           "\"Minha moto usada vai ser bem avaliada como entrada no negócio?\"",
@@ -334,10 +340,8 @@ export const presentationData = {
       "content_slots": {
         "titulo": "Objetivos Estratégicos & OKRs do Projeto",
         "fase_projeto": "Fase de Calibragem de Indicadores (Até Dezembro / ~3 Meses Variáveis)",
-        "objetivo_geral": "Até dezembro, estabelecer e calibrar todos os indicadores de tráfego pago e performance comercial da Garantida Motos com base na estratégia de campanhas executada. Após esse período inicial de 3 meses (prazo variável conforme a maturidade e volume de dados coletados), analisar a estabilidade das métricas, avaliar a redução do CPL e CAC e estruturar a expansão segura de verba para reconquistar o patamar histórico de 80 a 100+ motos/mês.",
+        "objetivo_geral": "Até dezembro, estabelecer e calibrar todos os indicadores de tráfego pago e performance comercial da Garantida Motos com base na estratégia de campanhas executada. Após esse período inicial de 3 meses (prazo variável conforme a maturidade e volume de dados coletados), analisar a estabilidade das métricas, avaliar a redução do CPL e CAC e buscar performance alinhada ao Break-Even (Ponto de equilíbrio) do projeto.",
         "kr1_texto": "Encontrar e consolidar 100% dos indicadores de performance (CPL por unidade, volume diário de leads, MQL, SQL, CAC e taxa de conversão por vendedor no CRM).",
-        "kr2_texto": "Atingir e sustentar o ROI 1 do projeto, garantindo o retorno sobre o investimento total da assessoria e mídia paga através do lucro bruto gerado.",
-        "kr3_texto": "Gerar entre 20 e 25 leads qualificados diários (600 a 750 leads/mês) no teto de R$ 4.000/mês de mídia, sustentando o ponto de equilíbrio operacional (48 motos/mês) rumo a 80-85 vendas.",
         "insights_operacionais": [
           "Calibragem contínua de CPL e taxas de conversão por loja",
           "Alimentação obrigatória do CRM Kanban pela equipe comercial",
@@ -353,16 +357,16 @@ export const presentationData = {
         "titulo": "Pilares da Estratégia de Aceleração Comercial",
         "features": [
           {
-            "titulo": "Foco Inicial nas 3 Unidades da Garantida Multimarcas",
-            "descricao": "Centralização dos anúncios em uma conta estruturada com segmentações geográficas exclusivas para Matriz Teresina/PI, Timon/MA e São Miguel do Tapuio/PI, direcionando o tráfego para os números e consultores dedicados de cada loja."
+            "titulo": "Segmentação Geográfica Estratégica (Teresina/Timon vs São Miguel)",
+            "descricao": "Teresina (Matriz) e Timon (MA) são cidades irmãs coladas (raio compartilhado de até 30 km) agrupadas em campanha conjunta de alta densidade; São Miguel do Tapuio (a 160 km de distância) terá campanha regional dedicada com comunicação específica."
           },
           {
-            "titulo": "Ofertas Comerciais de Tração Imediata (Shineray Jet & Negativados)",
-            "descricao": "Campanhas direcionadas para os principais motores de vendas: Shineray Jet (R$ 13.790), condições de financiamento bancário ágil, o programa patenteado Compra Garantida e opções de locação com intenção de compra para clientes com restrição no CPF."
+            "titulo": "Foco Absoluto na Venda Direta de Motos (Shineray Jet, 170 & Seminovas)",
+            "descricao": "Todo o investimento de mídia concentrado nas ofertas de tração rápida e alta liquidez, gerando fluxo diário de compradores e evitando desvio de foco ou filas de espera por locação."
           },
           {
-            "titulo": "Sinergia Operacional: V4 Company + Garantida Motos",
-            "descricao": "A V4 desenvolve os roteiros comerciais, edita os criativos e otimiza diariamente as campanhas no Meta e Google; a equipe da Garantida realiza a captação bruta nas lojas e os 7 a 10 vendedores atendem os leads e registram no CRM."
+            "titulo": "Alinhamento Comercial & Implementação do CRM na 2ª Semana",
+            "descricao": "Reunião de alinhamento operacional com Joaquim e os 7 a 10 consultores comerciais para definir critérios de MQL/SQL, etapas de funil, tempo de resposta ágil e disciplina diária de follow-up."
           }
         ]
       }
@@ -371,24 +375,61 @@ export const presentationData = {
       "id": "13_estrategia_campanhas",
       "slide_type": "campaign_strategy_boxes",
       "content_slots": {
-        "titulo": "Alocação Estratégica do Orçamento de Mídia",
+        "titulo": "Planejamento de Mídia: Cenários & Alocação de Verba",
         "boxes": [
           {
-            "percentual": "75%",
-            "nome": "Conversão no WhatsApp (Meta Ads)",
-            "detalhes": "R$ 3.000/mês. Foco direto na geração de 20 a 25 leads diários para o WhatsApp das 3 unidades. Anúncios de Shineray Jet, entrada facilitada, Compra Garantida e aprovação para negativados com roteiros gravados na loja."
+            "percentual": "Cenário 1",
+            "nome": "Plano Básico (R$ 4.000/mês)",
+            "detalhes": "100% focado em Meta Ads direto para WhatsApp. Campanha Conjunta Teresina + Timon (~R$ 2.700) e Campanha Regional São Miguel do Tapuio (~R$ 1.300). CPL projetado em R$ 4,00 a R$ 5,00 gerando 800 a 1.000 conversas/mês sem dispersar verba."
           },
           {
-            "percentual": "15%",
-            "nome": "Intenção Local (Google Ads & Perfil)",
-            "detalhes": "R$ 600/mês. Captura de pessoas que buscam ativamente por 'comprar moto em Teresina / Timon', 'motos Shineray' ou 'motos seminovas', reforçando a liderança de buscas no Google Meu Negócio."
+            "percentual": "Cenário 2",
+            "nome": "Plano Recomendado V4 (R$ 6.000/mês)",
+            "detalhes": "R$ 2.000/mês para cada unidade de forma individualizada (Teresina, Timon e São Miguel do Tapuio), com WhatsApps dedicados e equipe comercial absorvendo maior volume para acelerar a meta de 80 a 100 motos."
           },
           {
-            "percentual": "10%",
-            "nome": "Remarketing & Feirões da Loja",
-            "detalhes": "R$ 400/mês. Reimpacto de quem já interagiu com o Instagram ou enviou mensagem e não fechou, além de verba extra para impulsionar os Feirões presenciais que historicamente batem recordes de vendas."
+            "percentual": "Fase 2",
+            "nome": "Expansão Futura (Mês 2 e 3)",
+            "detalhes": "Após calibrar os indicadores de WhatsApp, ativação de Google Ads (Pesquisa/PDV para quem busca 'comprar moto em Teresina'), Remarketing de indecisos no CRM e campanhas sazonais de Feirão (Black Friday / Natal / 'Ano Novo de Moto Nova')."
           }
         ]
+      }
+    },
+    {
+      "id": "13_detalhes_trafego",
+      "slide_type": "traffic_strategy_placeholder",
+      "content_slots": {
+        "titulo": "Arquitetura & Detalhes da Estratégia de Tráfego",
+        "subtitulo": "Parâmetros técnicos de campanhas, segmentações de público, criativos e esteira de conversão",
+        "imagem_url": "",
+        "image_placeholder": "Espaço reservado para o Diagrama / Print da Estrutura Detalhada de Campanhas no Gerenciador de Anúncios",
+        "pilares_tecnicos": [
+          {
+            "titulo": "Configuração Técnica & Tracking",
+            "descricao": "Pixel e CAPI otimizados para 'Iniciar Conversa' no WhatsApp com tracking de UTMs por loja e vendedor."
+          },
+          {
+            "titulo": "Geotargeting & Segmentação",
+            "descricao": "Raio conjunto de 25-30km para Teresina/Timon e raio de 15-20km com expansão regional para São Miguel do Tapuio."
+          },
+          {
+            "titulo": "Esteira de Criativos em Vídeo",
+            "descricao": "Vídeos com vendedores no pátio, provas de entrega 'chave na mão' e criativos com parcelas e entrada facilitada."
+          },
+          {
+            "titulo": "Otimização Diária de CPL",
+            "descricao": "Meta de CPL entre R$ 4 e R$ 5, monitoramento de MQL/SQL no CRM e remanejamento contínuo de orçamento."
+          }
+        ]
+      }
+    },
+    {
+      "id": "18_drawflow_funil",
+      "slide_type": "visual_drawflow",
+      "content_slots": {
+        "titulo": "Drawflow do Funil Comercial & Estrutura de Campanhas",
+        "subtitulo": "Distribuição de verba por praça (Teresina/Timon e São Miguel), criativos em vídeo e conversão no CRM",
+        "orcamento_total": "R$ 4.000 (Básico) / R$ 6.000 (Recomendado)"
       }
     },
     {
@@ -408,48 +449,13 @@ export const presentationData = {
       }
     },
     {
-      "id": "18_drawflow_funil",
-      "slide_type": "visual_drawflow",
-      "content_slots": {
-        "titulo": "Drawflow do Funil Comercial & Atendimento",
-        "subtitulo": "Estrutura de aquisição, distribuição no CRM e conversão para as 3 lojas",
-        "orcamento_total": "R$ 4.000/mês"
-      }
-    },
-    {
       "id": "19_cronograma",
       "slide_type": "spreadsheet_placeholder",
       "content_slots": {
-        "titulo": "Cronograma de Aceleração & Próximos Passos",
+        "titulo": "Cronograma de Aceleração & Playbook Operacional",
         "tipo_planilha": "Cronograma Operacional",
-        "imagem_url": "",
-        "link_planilha": ""
-      }
-    },
-    {
-      "id": "20_plano_midia",
-      "slide_type": "media_projection",
-      "content_slots": {
-        "titulo": "Projeção de Resultados & Ponto de Equilíbrio",
-        "orcamento": "R$ 4.000/mês de Mídia",
-        "cenarios": [
-          {
-            "nome": "Ponto de Equilíbrio (Break-Even)",
-            "pedidos": "48 Motos",
-            "cpa": "R$ 650 (CAC)"
-          },
-          {
-            "nome": "Meta do Projeto (Curto Prazo)",
-            "pedidos": "80 a 85 Motos",
-            "cpa": "R$ 580 (CAC)"
-          },
-          {
-            "nome": "Meta de Escala (Pico Histórico)",
-            "pedidos": "100+ Motos",
-            "cpa": "R$ 500 (CAC)"
-          }
-        ],
-        "alcance_estimado": "Com o orçamento de R$ 4.000/mês e CPL médio projetado entre R$ 2,50 e R$ 5,00, estima-se gerar de 600 a 750 leads qualificados por mês (20 a 25/dia), garantindo tração para os 7 a 10 vendedores baterem as metas por unidade (30 a 55 Matriz, 10 a 25 Timon, 8 a 15 São Miguel)."
+        "imagem_url": "https://i.imgur.com/7gtGM8o.png",
+        "link_planilha": "https://docs.google.com/spreadsheets/d/1s7ikzzwqHTsJip06orFo-eO9UJFR-aV8Do6pljXNGsA/edit?gid=652949990#gid=652949990"
       }
     }
   ]
