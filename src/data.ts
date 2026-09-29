@@ -388,11 +388,6 @@ export const presentationData = {
             "percentual": "Cenário B · Recomendado V4",
             "nome": "Plano de Aceleração (R$ 5.500/mês | R$ 183/dia)",
             "detalhes": "Meta Ads R$ 4.100 (75%) + Google Ads R$ 1.400 (25%). Mais verba na praça principal (M1 R$ 2.200), ativação de Prova Social M5 (R$ 300) para aquecer e baratear o tráfego, e Google com volume robusto para seminovas (G3 R$ 200) e intenção (G1 R$ 700). Projeta ~1.020 leads/mês, ~36 motos vendidas pela mídia somando 61 a 66 motos/mês (+7 motos a R$ 214 cada vs R$ 700 de margem) gerando ~R$ 20 mil de margem líquida (+R$ 3,5 mil)."
-          },
-          {
-            "percentual": "Eficiência Marginal",
-            "nome": "Por que o Cenário B é mais rentável?",
-            "detalhes": "Os R$ 1.500 extras compram cerca de 7 motos a mais por mês a ~R$ 214 cada, valor muito inferior à margem de contribuição de R$ 700/moto. Além disso, abre espaço para o Google operar com volume real de aprendizado e alimenta a prova social no Meta, segurando o CPL à medida que a verba escala."
           }
         ]
       }
