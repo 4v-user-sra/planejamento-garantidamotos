@@ -897,83 +897,27 @@ function RenderBlock({ slide }: { slide: any }) {
   if (type === 'creative_workflow') {
     const icons: any = { FileText, CheckCircle2, Video, Rocket }
 
-    const creativeMatrix = [
-      { formato: "Vídeo com Vendedor", exemplo: "Vinicius ou Yasmin apresentando a Jet e condição do mês (até 30s) • Formato campeão", cenA: 3, cenB: 4 },
-      { formato: "Entrega de Chave", exemplo: "Cliente real saindo da loja com a moto, buzina, confetes e comemoração", cenA: 2, cenB: 3 },
-      { formato: "Carrossel de Modelos", exemplo: "Jet, 170, Phoenix e Urban Lite com parcelas, entradas e regras claras", cenA: 1, cenB: 2 },
-      { formato: "Seminovas & Troca", exemplo: "Motos revisadas na oficina própria com garantia e avaliação da usada na troca", cenA: 1, cenB: 2 },
-      { formato: "São Miguel do Tapuio", exemplo: "Loja e clientes da cidade, sotaque e referências regionais autênticas", cenA: 1, cenB: 1 }
-    ]
-
     return (
-      <div className="flex flex-col items-center max-w-5xl mx-auto w-full gap-12">
-        <div className="text-center">
-          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} mb-3`}>{d.titulo}</h2>
-          <p className={`text-base md:text-lg ${subtitleColor} max-w-3xl mx-auto`}>{d.subtitulo}</p>
-        </div>
+      <div className="flex flex-col items-center max-w-4xl mx-auto w-full">
+        <h2 className={`text-4xl font-bold ${titleColor} mb-4 text-center`}>{d.titulo}</h2>
+        <p className={`text-lg ${subtitleColor} mb-16 text-center max-w-2xl`}>{d.subtitulo}</p>
 
         {/* Horizontal Workflow timeline */}
-        <div className="flex flex-col md:flex-row items-center w-full justify-between relative px-4">
+        <div className="flex flex-col md:flex-row items-center w-full justify-between relative mb-4 px-4">
           <div className={`hidden md:block absolute top-8 left-12 right-12 h-1 -translate-y-1/2 rounded-full ${isLight ? 'bg-zinc-200' : 'bg-zinc-800'} z-0`} />
 
           {d.passos?.map((passo: any, i: number) => {
             const Icon = icons[passo.icone] || FileText
             return (
-              <div key={i} className="flex flex-col items-center text-center gap-3 group relative z-10 mb-8 md:mb-0 w-36">
+              <div key={i} className="flex flex-col items-center text-center gap-4 group relative z-10 mb-8 md:mb-0 w-36">
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center border shadow-xl transition-all duration-300 group-hover:-translate-y-2 
                   ${isLight ? 'bg-white border-zinc-200 shadow-zinc-200/50' : 'bg-zinc-950 border-zinc-800 shadow-black/50'}`}>
                   <Icon className="w-7 h-7 text-red-500" />
                 </div>
-                <h4 className={`font-bold text-xs md:text-sm ${titleColor} leading-tight`}>{passo.titulo}</h4>
+                <h4 className={`font-bold text-sm ${titleColor} leading-tight`}>{passo.titulo}</h4>
               </div>
             )
           })}
-        </div>
-
-        {/* Creative Production Matrix Table */}
-        <div className={`w-full rounded-2xl border ${isLight ? 'bg-white border-zinc-200' : 'bg-zinc-900 border-zinc-800'} p-6 md:p-8 shadow-xl`}>
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800">
-            <div>
-              <h3 className={`text-xl font-bold ${titleColor}`}>Matriz Mensal de Produção de Criativos</h3>
-              <p className={`text-xs mt-1 ${subtitleColor}`}>Mix balanceado entre prova social, autoridade e conversão direta</p>
-            </div>
-            <div className="flex items-center gap-3 text-xs font-bold">
-              <span className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
-                Cenário A: 8 criativos/mês
-              </span>
-              <span className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400">
-                Cenário B: 12 criativos/mês
-              </span>
-            </div>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className={`border-b ${isLight ? 'border-zinc-200 text-zinc-500' : 'border-zinc-800 text-zinc-400'} text-xs uppercase tracking-wider font-mono`}>
-                  <th className="pb-3 font-bold">Formato & Estilo</th>
-                  <th className="pb-3 font-bold">Exemplo / Direcionamento Criativo</th>
-                  <th className="pb-3 font-bold text-center">Cenário A</th>
-                  <th className="pb-3 font-bold text-center">Cenário B</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
-                {creativeMatrix.map((item, idx) => (
-                  <tr key={idx} className="hover:bg-zinc-500/5 transition-colors">
-                    <td className={`py-3.5 font-bold ${titleColor}`}>{item.formato}</td>
-                    <td className={`py-3.5 ${subtitleColor} text-xs md:text-sm`}>{item.exemplo}</td>
-                    <td className="py-3.5 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">{item.cenA}</td>
-                    <td className="py-3.5 text-center font-mono font-bold text-red-600 dark:text-red-400">{item.cenB}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-5 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-300 flex items-start gap-2">
-            <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
-            <span><strong>Regra do Kickoff:</strong> Toda condição comercial divulgada precisa trazer as regras claras (entrada, prazo, sujeito a análise). Evitar poluição visual e excesso de caixa alta.</span>
-          </div>
         </div>
       </div>
     )
@@ -985,30 +929,37 @@ function RenderBlock({ slide }: { slide: any }) {
         <div className="w-full flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 max-w-6xl">
           <div>
             <h2 className={`text-3xl md:text-4xl font-bold ${titleColor}`}>{d.titulo}</h2>
-            <p className={`text-base mt-2 ${subtitleColor}`}>{d.subtitulo || "Estrutura de aquisição em 3 canais, distribuição no CRM e conversão para as 3 lojas"}</p>
+            <p className={`text-base mt-2 ${subtitleColor}`}>{d.subtitulo || "Estrutura e distribuição tática do Orçamento Aprovado de R$ 4.000/mês"}</p>
           </div>
         </div>
         
         <div className="min-w-[1050px] w-full max-w-6xl flex flex-col items-center relative">
-          {/* Top Node: Budget Scenarios */}
-          <div className="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 border-2 border-zinc-700 text-white font-extrabold px-8 py-4 rounded-2xl flex items-center gap-6 shadow-2xl z-10">
-            <div className="flex items-center gap-3">
-              <DollarSign className="w-6 h-6 text-emerald-400" />
-              <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário A · Orçamento Aprovado</span>
-                <span className="text-lg text-emerald-400 font-black">R$ 4.000 / mês <span className="text-xs text-zinc-400 font-normal">(Meta R$ 3.200 + Google R$ 800)</span></span>
+          {/* Top Node: Approved Budget R$ 4.000 */}
+          <div className="bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 border-2 border-red-600/60 text-white font-extrabold px-8 py-5 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl z-10 w-full max-w-4xl">
+            <div className="flex items-center gap-4">
+              <div className="p-3.5 bg-red-600/20 border border-red-500/40 rounded-2xl text-red-500">
+                <DollarSign className="w-8 h-8" />
+              </div>
+              <div className="text-left">
+                <span className="text-[11px] uppercase tracking-widest text-zinc-400 font-semibold block">Orçamento Aprovado</span>
+                <span className="text-3xl text-white font-black">R$ 4.000 <span className="text-sm text-zinc-400 font-normal">/ mês (R$ 133/dia)</span></span>
               </div>
             </div>
-            <div className="h-8 w-px bg-zinc-700" />
-            <div className="flex items-center gap-3">
-              <Rocket className="w-6 h-6 text-red-500" />
-              <div className="flex flex-col text-left">
-                <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Cenário B · Recomendado V4</span>
-                <span className="text-lg text-red-400 font-black">R$ 5.500 / mês <span className="text-xs text-zinc-400 font-normal">(Meta R$ 4.100 + Google R$ 1.400)</span></span>
+
+            <div className="flex items-center gap-6 border-t md:border-t-0 md:border-l border-zinc-800 pt-4 md:pt-0 md:pl-6">
+              <div className="text-left">
+                <span className="text-[10px] uppercase tracking-wider text-emerald-400 font-bold block">Meta Ads (80%)</span>
+                <span className="text-xl font-black text-emerald-400">R$ 3.200 <span className="text-xs text-zinc-400 font-normal">/mês (R$ 107/dia)</span></span>
+              </div>
+              <div className="h-8 w-px bg-zinc-800" />
+              <div className="text-left">
+                <span className="text-[10px] uppercase tracking-wider text-blue-400 font-bold block">Google Search (20%)</span>
+                <span className="text-xl font-black text-blue-400">R$ 800 <span className="text-xs text-zinc-400 font-normal">/mês (R$ 27/dia)</span></span>
               </div>
             </div>
           </div>
 
+          {/* Connectors to 3 Channels */}
           <div className={`h-8 w-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
           <div className={`w-[85%] h-px ${isLight ? 'bg-zinc-300' : 'bg-zinc-700'}`} />
           
@@ -1024,12 +975,12 @@ function RenderBlock({ slide }: { slide: any }) {
             </div>
           </div>
 
-          {/* 3 Campaign Channels */}
+          {/* 3 Campaign Channels with Exact Approved Allocations */}
           <div className="grid grid-cols-3 gap-6 w-full px-4 mt-2 z-10">
             {/* Branch 1: Meta Ads Teresina + Timon */}
             <div className={`${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-emerald-500/60 relative flex flex-col justify-between overflow-hidden`}>
               <div className="absolute top-0 right-0 bg-emerald-500 text-white font-black text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                Motor Principal (65-75%)
+                Motor Principal (65%)
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1.5">
@@ -1037,12 +988,23 @@ function RenderBlock({ slide }: { slide: any }) {
                   <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Teresina & Timon (25 km)</span>
                 </div>
                 <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Meta Ads WhatsApp</h4>
-                <p className="text-xl font-black text-emerald-600 mb-2">R$ 1.800 <span className="text-xs text-zinc-500">a</span> R$ 2.200 <span className="text-xs text-zinc-500">/mês</span></p>
-                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
-                  <p><strong>M1:</strong> Jet, 170 e Compra Garantida (Interesses + ADV+ + LAL).</p>
-                  <p><strong>M3:</strong> Seminovas e Troca com garantia da oficina.</p>
-                  <p><strong>M4:</strong> Remarketing de públicos quentes (oferta com prazo).</p>
-                  <p className="text-emerald-700 dark:text-emerald-400 font-semibold">⚡ M5: Prova social e entrega de chaves</p>
+                <p className="text-2xl font-black text-emerald-600 mb-3">R$ 2.600 <span className="text-xs text-zinc-500 font-semibold">/mês (R$ 87/dia)</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-2`}>
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                    <p className="font-bold text-emerald-700 dark:text-emerald-400">M1 · Jet, 170 e Compra Garantida:</p>
+                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold">R$ 1.800/mês (R$ 60/dia · 45%)</p>
+                    <p className="text-[11px] text-zinc-500">22-55 anos · Interesses + Advantage+</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                    <p className="font-bold text-emerald-700 dark:text-emerald-400">M3 · Seminovas & Troca:</p>
+                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold">R$ 400/mês (R$ 13/dia · 10%)</p>
+                    <p className="text-[11px] text-zinc-500">Avaliação da usada e garantia de oficina</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                    <p className="font-bold text-emerald-700 dark:text-emerald-400">M4 · Remarketing de Quentes:</p>
+                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold">R$ 400/mês (R$ 13/dia · 10%)</p>
+                    <p className="text-[11px] text-zinc-500">Quem conversou, engajou ou viu vídeos</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1050,7 +1012,7 @@ function RenderBlock({ slide }: { slide: any }) {
             {/* Branch 2: Meta Ads São Miguel do Tapuio */}
             <div className={`${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-red-500/60 relative flex flex-col justify-between overflow-hidden`}>
               <div className="absolute top-0 right-0 bg-red-500 text-white font-black text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                Regional Interior (15-20%)
+                Regional Interior (15%)
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1.5">
@@ -1058,11 +1020,15 @@ function RenderBlock({ slide }: { slide: any }) {
                   <span className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">São Miguel (Raio 50 km)</span>
                 </div>
                 <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Meta Ads Regional</h4>
-                <p className="text-xl font-black text-red-600 mb-2">R$ 600 <span className="text-xs text-zinc-500">a</span> R$ 700 <span className="text-xs text-zinc-500">/mês</span></p>
-                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
-                  <p><strong>M2:</strong> Comunicação local, vídeo da loja e clientes da cidade.</p>
-                  <p><strong>Público:</strong> Trabalhadores rurais e autônomos buscando economia.</p>
-                  <p className="text-red-700 dark:text-red-400 font-semibold">📍 WhatsApp direto da equipe da loja de São Miguel</p>
+                <p className="text-2xl font-black text-red-600 mb-3">R$ 600 <span className="text-xs text-zinc-500 font-semibold">/mês (R$ 20/dia)</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-2`}>
+                  <div className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20">
+                    <p className="font-bold text-red-700 dark:text-red-400">M2 · WhatsApp Loja São Miguel:</p>
+                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold">R$ 600/mês (R$ 20/dia · 15%)</p>
+                    <p className="text-[11px] text-zinc-500">22-60 anos · Cidades vizinhas a 160 km</p>
+                  </div>
+                  <p><strong>Comunicação:</strong> Vídeos da loja física, clientes locais e sotaque regional.</p>
+                  <p className="text-red-700 dark:text-red-400 font-semibold">📍 WhatsApp direto da equipe de São Miguel</p>
                   <p className="text-[11px] text-zinc-500">Verba calibrada para 19k hab sem saturar frequência.</p>
                 </div>
               </div>
@@ -1071,7 +1037,7 @@ function RenderBlock({ slide }: { slide: any }) {
             {/* Branch 3: Google Ads Search */}
             <div className={`${cardBg} p-6 rounded-2xl text-left shadow-xl border-2 border-blue-500/60 relative flex flex-col justify-between overflow-hidden`}>
               <div className="absolute top-0 right-0 bg-blue-500 text-white font-black text-[10px] px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                Alta Intenção (20-25%)
+                Alta Intenção (20%)
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1.5">
@@ -1079,12 +1045,23 @@ function RenderBlock({ slide }: { slide: any }) {
                   <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Google Rede de Pesquisa</span>
                 </div>
                 <h4 className={`font-black text-xl mb-1 ${titleColor}`}>Google Search</h4>
-                <p className="text-xl font-black text-blue-600 mb-2">R$ 800 <span className="text-xs text-zinc-500">a</span> R$ 1.400 <span className="text-xs text-zinc-500">/mês</span></p>
-                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-1.5`}>
-                  <p><strong>G1:</strong> Intenção ('comprar moto', 'financiamento sem entrada').</p>
-                  <p><strong>G2:</strong> Modelos Shineray Jet e 170 (preço e parcelas).</p>
-                  <p><strong>G3:</strong> Seminovas ('moto usada teresina', 'trocar moto').</p>
-                  <p className="text-blue-700 dark:text-blue-400 font-semibold">🛡️ G4: Proteção da marca 'Garantida Motos'</p>
+                <p className="text-2xl font-black text-blue-600 mb-3">R$ 800 <span className="text-xs text-zinc-500 font-semibold">/mês (R$ 27/dia)</span></p>
+                <div className={`text-xs ${isLight ? 'text-zinc-600' : 'text-zinc-300'} space-y-2`}>
+                  <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                    <p className="font-bold text-blue-700 dark:text-blue-400">G1 · Intenção de Compra:</p>
+                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold">R$ 500/mês (R$ 17/dia · 12,5%)</p>
+                    <p className="text-[11px] text-zinc-500">'comprar moto', 'financiamento sem entrada'</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                    <p className="font-bold text-blue-700 dark:text-blue-400">G2 · Modelos Jet e 170:</p>
+                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold">R$ 200/mês (R$ 7/dia · 5%)</p>
+                    <p className="text-[11px] text-zinc-500">Buscas de preço, parcelas e catálogo</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                    <p className="font-bold text-blue-700 dark:text-blue-400">G3 · Proteção de Marca:</p>
+                    <p className="text-zinc-600 dark:text-zinc-300 font-semibold">R$ 100/mês (R$ 3/dia · 2,5%)</p>
+                    <p className="text-[11px] text-zinc-500">Defesa do termo 'Garantida Motos'</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1100,12 +1077,13 @@ function RenderBlock({ slide }: { slide: any }) {
                 </div>
                 <div>
                   <span className="text-xl font-black block">Central de Atendimento & CRM Kanban</span>
-                  <span className="text-xs font-normal text-red-100">Tracking de origem [M1, M2, G1], qualificação e resposta rápida &lt; 5 min com Joaquim e consultores</span>
+                  <span className="text-xs font-normal text-red-100">Tracking de origem [M1, M2, M3, G1], qualificação e resposta rápida &lt; 5 min com Joaquim e consultores</span>
                 </div>
               </div>
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl text-right shrink-0">
-                <span className="text-[10px] uppercase block text-red-100 font-bold">Volume Esperado</span>
-                <span className="text-base font-black">865 a 1.020 Leads/mês</span>
+                <span className="text-[10px] uppercase block text-red-100 font-bold">Capacidade Base</span>
+                <span className="text-base font-black">~865 Leads/mês</span>
+                <span className="text-[10px] block text-red-100 font-medium">~25 a 30 leads/dia</span>
               </div>
             </div>
           </div>
@@ -1119,7 +1097,7 @@ function RenderBlock({ slide }: { slide: any }) {
               <Store className="w-7 h-7 text-emerald-500 shrink-0" />
               <div className="text-left">
                 <span className="text-base font-black block">Fechamento na Loja Física & Feirões</span>
-                <span className={`text-xs ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>Visita presencial, simulação de crédito, aprovação imediata e entrega</span>
+                <span className={`text-xs ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>~29 motos via mídia (total 54 a 59 motos/mês somadas à base, superando o break-even) • R$ 290k fat.</span>
               </div>
             </div>
 
@@ -1128,104 +1106,11 @@ function RenderBlock({ slide }: { slide: any }) {
               <RefreshCw className="w-7 h-7 text-blue-500 shrink-0" />
               <div className="text-left">
                 <span className="text-base font-black block">Pós-Venda & Subida de Compradores</span>
-                <span className={`text-xs ${isLight ? 'text-blue-700' : 'text-blue-300'}`}>Lista do CRM alimenta público semelhante (LAL) e exclui clientes no Meta</span>
+                <span className={`text-xs ${isLight ? 'text-blue-700' : 'text-blue-300'}`}>Lista do CRM alimenta público semelhante (LAL) e exclui clientes no Meta • Margem líquida: ~R$ 16,5k</span>
               </div>
             </div>
           </div>
 
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'optimization_rules') {
-    return (
-      <div className="flex flex-col max-w-5xl mx-auto w-full gap-8">
-        <div className="text-center">
-          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} mb-3`}>{d.titulo}</h2>
-          <p className={`text-base md:text-lg ${subtitleColor} max-w-3xl mx-auto`}>{d.subtitulo}</p>
-        </div>
-
-        <div className={`w-full rounded-2xl border ${isLight ? 'bg-white border-zinc-200 shadow-xl' : 'bg-zinc-900 border-zinc-800 shadow-2xl'} p-6 md:p-8`}>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className={`border-b ${isLight ? 'border-zinc-200 text-zinc-500' : 'border-zinc-800 text-zinc-400'} text-xs uppercase tracking-wider font-mono`}>
-                  <th className="pb-3 font-bold">Indicador de Performance</th>
-                  <th className="pb-3 font-bold text-emerald-600 dark:text-emerald-400">Zona Saudável</th>
-                  <th className="pb-3 font-bold text-amber-600 dark:text-amber-400">Gatilho de Atenção</th>
-                  <th className="pb-3 font-bold">Ação Operacional Recomendada</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800">
-                {d.regras?.map((regra: any, idx: number) => (
-                  <tr key={idx} className="hover:bg-zinc-500/5 transition-colors">
-                    <td className={`py-3.5 font-bold ${titleColor}`}>{regra.indicador}</td>
-                    <td className="py-3.5 font-bold text-emerald-600 dark:text-emerald-400 font-mono">{regra.saudavel}</td>
-                    <td className="py-3.5 font-bold text-amber-600 dark:text-amber-400 font-mono">{regra.atencao}</td>
-                    <td className={`py-3.5 ${subtitleColor} text-xs md:text-sm`}>{regra.acao}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {d.nota_remanejamento && (
-            <div className="mt-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-700 dark:text-blue-300 flex items-start gap-3">
-              <span className="text-base shrink-0">🔄</span>
-              <span><strong>Remanejamento Dinâmico:</strong> {d.nota_remanejamento}</span>
-            </div>
-          )}
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'quarterly_calendar') {
-    return (
-      <div className="flex flex-col max-w-5xl mx-auto w-full gap-8">
-        <div className="text-center">
-          <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} mb-3`}>{d.titulo}</h2>
-          <p className={`text-base md:text-lg ${subtitleColor} max-w-3xl mx-auto`}>{d.subtitulo}</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {d.meses?.map((item: any, idx: number) => {
-            const badgeColor = idx === 0 
-              ? 'bg-blue-500/10 border-blue-500/30 text-blue-600 dark:text-blue-400' 
-              : idx === 1 
-              ? 'bg-amber-500/10 border-amber-500/30 text-amber-600 dark:text-amber-400' 
-              : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
-
-            const borderHighlight = idx === 0 
-              ? 'border-t-blue-500' 
-              : idx === 1 
-              ? 'border-t-amber-500' 
-              : 'border-t-emerald-500'
-
-            return (
-              <div 
-                key={idx} 
-                className={`${cardBg} p-7 rounded-2xl border-2 border-t-4 ${borderHighlight} ${isLight ? 'border-zinc-200 shadow-lg' : 'border-zinc-800 shadow-xl'} flex flex-col justify-between gap-4`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-2xl font-black tracking-tight">{item.mes}</span>
-                    <span className={`px-2.5 py-1 rounded-lg border text-[10px] font-black uppercase tracking-wider ${badgeColor}`}>
-                      Mês 0{idx + 1}
-                    </span>
-                  </div>
-                  <h4 className={`text-base font-bold ${titleColor} mb-2`}>{item.etapa}</h4>
-                  <p className={`text-xs md:text-sm ${subtitleColor} leading-relaxed`}>{item.descricao}</p>
-                </div>
-
-                <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center gap-2 text-xs font-semibold text-red-600 dark:text-red-400">
-                  <span>🎯</span>
-                  <span>{item.destaque}</span>
-                </div>
-              </div>
-            )
-          })}
         </div>
       </div>
     )

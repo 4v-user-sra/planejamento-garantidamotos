@@ -363,6 +363,17 @@ export const presentationData = {
       }
     },
     {
+      "id": "13_detalhes_trafego",
+      "slide_type": "traffic_strategy_placeholder",
+      "content_slots": {
+        "titulo": "Arquitetura & Detalhes da Estratégia de Tráfego",
+        "subtitulo": "Parâmetros técnicos de campanhas, segmentações de público, criativos e esteira de conversão",
+        "imagem_url": "https://i.imgur.com/z0zClil.png",
+        "image_placeholder": "Diagrama da Estrutura de Tráfego e Campanhas Meta Ads & Google Ads",
+        "link_estrategia": "https://claude.ai/artifact/23hTLX2kUhfvBTRezZEzxk"
+      }
+    },
+    {
       "id": "13_estrategia_campanhas",
       "slide_type": "campaign_strategy_boxes",
       "content_slots": {
@@ -387,31 +398,20 @@ export const presentationData = {
       }
     },
     {
-      "id": "13_detalhes_trafego",
-      "slide_type": "traffic_strategy_placeholder",
-      "content_slots": {
-        "titulo": "Arquitetura & Detalhes da Estratégia de Tráfego",
-        "subtitulo": "Parâmetros técnicos de campanhas, segmentações de público, criativos e esteira de conversão",
-        "imagem_url": "https://i.imgur.com/z0zClil.png",
-        "image_placeholder": "Diagrama da Estrutura de Tráfego e Campanhas Meta Ads & Google Ads",
-        "link_estrategia": "https://claude.ai/artifact/23hTLX2kUhfvBTRezZEzxk"
-      }
-    },
-    {
       "id": "18_drawflow_funil",
       "slide_type": "visual_drawflow",
       "content_slots": {
         "titulo": "Drawflow do Funil Comercial & Estrutura de Campanhas",
-        "subtitulo": "Distribuição de verba por canal (Meta Ads Teresina/Timon, São Miguel e Google Search) e conversão no CRM",
-        "orcamento_total": "Cenário A: R$ 4.000/mês · Cenário B: R$ 5.500/mês"
+        "subtitulo": "Estrutura e distribuição tática do Orçamento Aprovado de R$ 4.000/mês (Meta Ads, Google Search e CRM)",
+        "orcamento_total": "Orçamento Aprovado: R$ 4.000 / mês (R$ 133/dia)"
       }
     },
     {
       "id": "21_criativos",
       "slide_type": "creative_workflow",
       "content_slots": {
-        "titulo": "Workflow de Produção Audiovisual & Matriz de Criativos",
-        "subtitulo": "Produção mensal de 8 criativos (Cenário A) a 12 criativos (Cenário B) integrada entre V4 e Garantida",
+        "titulo": "Workflow de Produção Audiovisual & Criativos",
+        "subtitulo": "Processo integrado entre o time de marketing da V4 e a operação da Garantida Motos",
         "passos": [
           { "titulo": "Roteiro & Estratégia (V4)", "icone": "FileText" },
           { "titulo": "Validação de Ofertas", "icone": "CheckCircle2" },
@@ -420,81 +420,6 @@ export const presentationData = {
           { "titulo": "Veiculação & Tráfego (V4)", "icone": "Rocket" }
         ],
         "link_exemplo": ""
-      }
-    },
-    {
-      "id": "22_regras_otimizacao",
-      "slide_type": "optimization_rules",
-      "content_slots": {
-        "titulo": "Gestão Semanal & Regras de Otimização",
-        "subtitulo": "Indicadores saudáveis, gatilhos de atenção e ações práticas de remanejamento",
-        "regras": [
-          {
-            "indicador": "Custo por conversa (Meta)",
-            "saudavel": "Até R$ 4,00",
-            "atencao": "Acima de R$ 6,00 por 3 dias",
-            "acao": "Pausar o criativo pior e subir um novo do formato vencedor."
-          },
-          {
-            "indicador": "Frequência (conversão)",
-            "saudavel": "Até 2,0",
-            "atencao": "Acima de 2,5",
-            "acao": "Trocar criativos ou expandir levemente o raio geográfico."
-          },
-          {
-            "indicador": "Frequência (remarketing)",
-            "saudavel": "Até 4,0",
-            "atencao": "Acima de 6,0",
-            "acao": "Reduzir temporariamente a verba da campanha de remarketing (M4)."
-          },
-          {
-            "indicador": "CPC Médio (Google Ads)",
-            "saudavel": "Até R$ 2,00",
-            "atencao": "Acima de R$ 3,00",
-            "acao": "Revisar termos de pesquisa reais e negativar termos irrelevantes (aluguel, vaga, peças, etc)."
-          },
-          {
-            "indicador": "Conversa que vira lead qualificado",
-            "saudavel": "40% ou mais",
-            "atencao": "Abaixo de 25%",
-            "acao": "Revisar público, criativo e roteiro de abordagem comercial no WhatsApp."
-          },
-          {
-            "indicador": "Tempo de 1ª resposta no WhatsApp",
-            "saudavel": "Até 5 min",
-            "atencao": "Acima de 30 min",
-            "acao": "Escalar com o Joaquim. Lead frio queima verba e reduz drasticamente a taxa de fechamento."
-          }
-        ],
-        "nota_remanejamento": "Toda segunda-feira, até 20% da verba pode migrar da campanha com pior custo por venda para a de melhor performance, mantendo o orçamento total do mês."
-      }
-    },
-    {
-      "id": "23_calendario_trimestral",
-      "slide_type": "quarterly_calendar",
-      "content_slots": {
-        "titulo": "Calendário de Aceleração Comercial (Outubro a Dezembro 2026)",
-        "subtitulo": "Evolução estratégica mês a mês até a consolidação dos indicadores",
-        "meses": [
-          {
-            "mes": "Outubro",
-            "etapa": "Calibragem & Tração Inicial",
-            "descricao": "Sobe a estrutura enxuta de campanhas, testa 2 públicos por praça e criativos no formato vencedor (vídeos com vendedores). CRM rodando com origem de campanha marcada desde o primeiro lead.",
-            "destaque": "Validação de CPL e Setup do CRM"
-          },
-          {
-            "mes": "Novembro",
-            "etapa": "Black Friday & 13º Salário",
-            "descricao": "Feirão promocional na semana da Black Friday. Concentração de 35% da verba do mês nessa semana estratégica, com a narrativa comercial 'Seu 13º salário vira a entrada da sua moto'.",
-            "destaque": "Pico de Volume & Feirão Presencial"
-          },
-          {
-            "mes": "Dezembro",
-            "etapa": "Ano Novo, Moto Nova",
-            "descricao": "Remarketing agressivo sobre toda a base de contatos que conversou em outubro e novembro. Feirão de fim de ano, fechamento dos indicadores consolidados e planejamento de escala para 2027.",
-            "destaque": "Conversão de Repescagem & Fechamento Anual"
-          }
-        ]
       }
     },
     {
