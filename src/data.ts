@@ -33,7 +33,7 @@ export const presentationData = {
         ],
         "etapa_atual_destacada": "Apresentação & Validação",
         "label_fase_rodape": "Você está na fase de validação estratégica e setup de campanhas",
-        "anotacoes_contextuais": "Alinhamento com Douglas (Diretor), Emanuelly (Admin/Financeiro), Joaquim (Comercial/CRM) e time de performance V4 (Felipe Stefanato, Thays Andrade, Emanuelle Sena, Giovanna Mariotto e Andreas Rocha). Foco: Meta Ads para WhatsApp, Google Ads de Pesquisa, 2 cenários de verba (Cenário A: R$ 4.000 aprovado vs Cenário B: R$ 5.500 recomendado) e acompanhamento comercial rigoroso no CRM."
+        "anotacoes_contextuais": "Alinhamento com Douglas (Diretor), Emanuelly (Admin/Financeiro), Joaquim (Comercial/CRM) e time de performance V4 (Felipe Stefanato, Thays Andrade, Emanuelle Sena, Giovanna Mariotto e Andreas Rocha). Foco: Meta Ads para WhatsApp, Google Ads de Pesquisa, Orçamento Aprovado de R$ 4.000/mês e acompanhamento comercial rigoroso no CRM."
       }
     },
     {

@@ -501,19 +501,19 @@ function RenderBlock({ slide }: { slide: any }) {
         {/* Top 3 KPI Cards */}
         <div className="grid md:grid-cols-3 gap-6">
           <div className={`${cardBg} p-6 rounded-2xl shadow-lg border-l-4 border-red-500 flex flex-col gap-2`}>
-            <span className={`text-xs uppercase tracking-wider font-semibold ${subtitleColor}`}>Orçamento Aprovado</span>
-            <span className="text-3xl font-black text-red-600">{d.investimento}</span>
-            <span className="text-xs text-zinc-500">Teto inicial • 20 a 25 leads qualificados/dia</span>
+            <span className={`text-xs uppercase tracking-wider font-semibold ${subtitleColor}`}>Investimento Total (Jan - Set)</span>
+            <span className="text-3xl font-black text-red-600">{d.investimento || "R$ 7.101 em 9 meses"}</span>
+            <span className="text-xs text-zinc-500">Média de ~R$ 790/mês • 40 campanhas e 160 anúncios</span>
           </div>
           <div className={`${cardBg} p-6 rounded-2xl shadow-lg border-l-4 border-emerald-500 flex flex-col gap-2`}>
-            <span className={`text-xs uppercase tracking-wider font-semibold ${subtitleColor}`}>Pico Histórico de Vendas</span>
-            <span className="text-3xl font-black text-emerald-600">100 Motos / Mês</span>
-            <span className="text-xs text-emerald-600 font-semibold">R$ 1 Milhão faturados em Março</span>
+            <span className={`text-xs uppercase tracking-wider font-semibold ${subtitleColor}`}>Volume Total de Conversas</span>
+            <span className="text-3xl font-black text-emerald-600">1.536 Leads</span>
+            <span className="text-xs text-emerald-600 font-semibold">Melhor mês em Fev (CPL de R$ 2,41)</span>
           </div>
           <div className={`${cardBg} p-6 rounded-2xl shadow-lg border-l-4 border-amber-500 flex flex-col gap-2`}>
-            <span className={`text-xs uppercase tracking-wider font-semibold ${subtitleColor}`}>CAC Histórico de Vendas</span>
-            <span className="text-3xl font-black text-amber-600">{d.cpa_medio}</span>
-            <span className="text-xs text-amber-600 font-semibold">Já considerando comissão de ~R$ 300</span>
+            <span className={`text-xs uppercase tracking-wider font-semibold ${subtitleColor}`}>CPL Médio Histórico</span>
+            <span className="text-3xl font-black text-amber-600">{d.cpa_medio || "R$ 3,70"}</span>
+            <span className="text-xs text-amber-600 font-semibold">Oscilação de R$ 2,41 a R$ 8,89 por falta de calibração</span>
           </div>
         </div>
 
